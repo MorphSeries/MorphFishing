@@ -1,5 +1,6 @@
 package dev.morphie.morphFishing;
 
+import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.Bukkit;
@@ -10,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public final class MorphFishing extends JavaPlugin {
 
@@ -17,6 +19,7 @@ public final class MorphFishing extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        Objects.requireNonNull(getCommand("fish")).setExecutor(new CommandsManager(this));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3   _____                      .__    ___________.__       .__    .__                "));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3  /     \\   _________________ |  |__ \\_   _____/|__| _____|  |__ |__| ____    ____ "));

@@ -5,3 +5,8 @@ api-version: '1.21'
 authors: [ Morphie ]
 depend: [MorphLib]
 description: A Minecraft plugin that allows setting of item names and lore.
+commands:
+  fish:
+    description: Main command for the MorphFishing plugin!
+    usage: /<command>
+    aliases: [morphfish, mf]

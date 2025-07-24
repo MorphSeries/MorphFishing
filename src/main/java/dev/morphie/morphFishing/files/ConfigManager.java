@@ -9,6 +9,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class ConfigManager {
 
@@ -26,7 +27,7 @@ public class ConfigManager {
     public FileConfiguration mythiccfg = new YamlConfiguration();
     public File mythicf;
 
-    public void createFishConfigs() {
+    public void createConfigs() {
         commonf = new File(plugin.getDataFolder() + File.separator + "Fish", "common.yml");
         raref = new File(plugin.getDataFolder() + File.separator + "Fish", "rare.yml");
         epicf = new File(plugin.getDataFolder() + File.separator + "Fish", "epic.yml");
@@ -52,11 +53,38 @@ public class ConfigManager {
         }
     }
 
-    public void reloadFishConfigs() {
+    public void reloadConfigs() {
         commoncfg = YamlConfiguration.loadConfiguration(commonf);
         rarecfg = YamlConfiguration.loadConfiguration(raref);
         epiccfg = YamlConfiguration.loadConfiguration(epicf);
         legendarycfg = YamlConfiguration.loadConfiguration(legendaryf);
         mythiccfg = YamlConfiguration.loadConfiguration(mythicf);
+        commoncfg.options().copyDefaults(true);
+        rarecfg.options().copyDefaults(true);
+        epiccfg.options().copyDefaults(true);
+        legendarycfg.options().copyDefaults(true);
+        mythiccfg.options().copyDefaults(true);
+    }
+
+    public String getString(String file, String path) {
+        return switch (file) {
+            case "common" -> commoncfg.getString(path);
+            case "rare" -> rarecfg.getString(path);
+            case "epic" -> epiccfg.getString(path);
+            case "legendary" -> legendarycfg.getString(path);
+            case "mythic" -> mythiccfg.getString(path);
+            default -> "Null message";
+        };
+    }
+
+    public List<String> getMessageList(String file, String path) {
+        return switch (file) {
+            case "common" -> commoncfg.getStringList(path);
+            case "rare" -> rarecfg.getStringList(path);
+            case "epic" -> epiccfg.getStringList(path);
+            case "legendary" -> legendarycfg.getStringList(path);
+            case "mythic" -> mythiccfg.getStringList(path);
+            default -> null;
+        };
     }
 }

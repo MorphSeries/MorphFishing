@@ -1,2 +1,9 @@
 # Test
+Common_Fish:
+  '0':
+    Name: "&"
+    Tagline: ""
+    Material: COD
+    CustomModelId: 0
+
 

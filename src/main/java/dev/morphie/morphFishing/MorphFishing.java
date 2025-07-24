@@ -4,13 +4,9 @@ import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Objects;
 
 public final class MorphFishing extends JavaPlugin {

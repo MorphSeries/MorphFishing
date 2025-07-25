@@ -20,7 +20,7 @@ public class FishReload {
             Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("MorphFishing");
             if (this.plugin != null) {
                 this.plugin.reloadConfig();
-                new ConfigManager(this.plugin).reloadConfigs();
+                new ConfigManager(this.plugin).loadConfigs();
                 sender.sendMessage(new Colorize().addColor(new ConfigManager(this.plugin).getMessage("messages", "Prefix") + new ConfigManager(this.plugin).getMessage("messages", "Commands.Admin.Reload")));
             }
         } else {

@@ -29,10 +29,11 @@ public class ConfigManager implements Listener {
     public FileConfiguration messagescfg;
     public File messagesf;
 
-    public void setup() {
+    public void setup() throws IOException {
         if (!this.plugin.getDataFolder().exists()) {
             this.plugin.getDataFolder().mkdir();
         }
+
         this.messagesf = new File(plugin.getDataFolder(), "messages.yml");
         this.commonf = new File(plugin.getDataFolder() + File.separator + "Fish", "common.yml");
         this.raref = new File(plugin.getDataFolder() + File.separator + "Fish", "rare.yml");
@@ -40,62 +41,35 @@ public class ConfigManager implements Listener {
         this.legendaryf = new File(plugin.getDataFolder()+ File.separator + "Fish", "legendary.yml");
         this.mythicf = new File(plugin.getDataFolder()+ File.separator + "Fish", "mythic.yml");
 
-        this.messagescfg = YamlConfiguration.loadConfiguration(this.messagesf);
-        this.commoncfg = YamlConfiguration.loadConfiguration(this.commonf);
-        this.rarecfg = YamlConfiguration.loadConfiguration(this.raref);
-        this.epiccfg = YamlConfiguration.loadConfiguration(this.epicf);
-        this.legendarycfg = YamlConfiguration.loadConfiguration(this.legendaryf);
-        this.mythiccfg = YamlConfiguration.loadConfiguration(this.mythicf);
-
-        this.messagescfg.options().copyDefaults(true);
-        this.commoncfg.options().copyDefaults(true);
-        this.rarecfg.options().copyDefaults(true);
-        this.epiccfg.options().copyDefaults(true);
-        this.legendarycfg.options().copyDefaults(true);
-        this.mythiccfg.options().copyDefaults(true);
-
-        this.saveConfigs();
-    }
-
-    public void reloadConfigs() {
-        this.saveConfigs();
-        this.messagesf = new File(plugin.getDataFolder(), "messages.yml");
-        this.commonf = new File(plugin.getDataFolder() + File.separator + "Fish", "common.yml");
-        this.raref = new File(plugin.getDataFolder() + File.separator + "Fish", "rare.yml");
-        this.epicf = new File(plugin.getDataFolder() + File.separator + "Fish", "epic.yml");
-        this.legendaryf = new File(plugin.getDataFolder()+ File.separator + "Fish", "legendary.yml");
-        this.mythicf = new File(plugin.getDataFolder()+ File.separator + "Fish", "mythic.yml");
-        this.messagescfg = YamlConfiguration.loadConfiguration(this.messagesf);
-        this.commoncfg = YamlConfiguration.loadConfiguration(this.commonf);
-        this.rarecfg = YamlConfiguration.loadConfiguration(this.raref);
-        this.epiccfg = YamlConfiguration.loadConfiguration(this.epicf);
-        this.legendarycfg = YamlConfiguration.loadConfiguration(this.legendaryf);
-        this.mythiccfg = YamlConfiguration.loadConfiguration(this.mythicf);
-        this.messagescfg.options().copyDefaults(false);
-        this.commoncfg.options().copyDefaults(false);
-        this.rarecfg.options().copyDefaults(false);
-        this.epiccfg.options().copyDefaults(false);
-        this.legendarycfg.options().copyDefaults(false);
-        this.mythiccfg.options().copyDefaults(false);
-    }
-
-    public void saveConfigs() {
-        this.messagesf = new File(plugin.getDataFolder(), "messages.yml");
-        this.commonf = new File(plugin.getDataFolder() + File.separator + "Fish", "common.yml");
-        this.raref = new File(plugin.getDataFolder() + File.separator + "Fish", "rare.yml");
-        this.epicf = new File(plugin.getDataFolder() + File.separator + "Fish", "epic.yml");
-        this.legendaryf = new File(plugin.getDataFolder()+ File.separator + "Fish", "legendary.yml");
-        this.mythicf = new File(plugin.getDataFolder()+ File.separator + "Fish", "mythic.yml");
-        try {
-            this.plugin.configManager.messagescfg.save(messagesf);
-            this.plugin.configManager.commoncfg.save(commonf);
-            this.plugin.configManager.rarecfg.save(raref);
-            this.plugin.configManager.epiccfg.save(epicf);
-            this.plugin.configManager.legendarycfg.save(legendaryf);
-            this.plugin.configManager.mythiccfg.save(mythicf);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        if (!messagesf.exists()) {
+            this.messagescfg = YamlConfiguration.loadConfiguration(this.messagesf);
+            this.messagescfg.save(new File(plugin.getDataFolder(), "messages.yml"));
+        } else if (!commonf.exists()) {
+            this.commoncfg = YamlConfiguration.loadConfiguration(this.commonf);
+            this.commoncfg.save(new File(plugin.getDataFolder(), "common.yml"));
+        } else if (!raref.exists()) {
+            this.rarecfg = YamlConfiguration.loadConfiguration(this.raref);
+            this.rarecfg.save(new File(plugin.getDataFolder(), "rare.yml"));
+        } else if (!epicf.exists()) {
+            this.epiccfg = YamlConfiguration.loadConfiguration(this.epicf);
+            this.epiccfg.save(new File(plugin.getDataFolder(), "epic.yml"));
+        } else if (!legendaryf.exists()) {
+            this.legendarycfg = YamlConfiguration.loadConfiguration(this.legendaryf);
+            this.legendarycfg.save(new File(plugin.getDataFolder(), "legendary.yml"));
+        } else if (!mythicf.exists()) {
+            this.mythiccfg = YamlConfiguration.loadConfiguration(this.mythicf);
+            this.mythiccfg.save(new File(plugin.getDataFolder(), "mythic.yml"));
         }
+        loadConfigs();
+    }
+
+    public void loadConfigs() {
+        this.plugin.configManager.messagescfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "messages.yml"));
+        this.plugin.configManager.commoncfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "common.yml"));
+        this.plugin.configManager.rarecfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "raref.yml"));
+        this.plugin.configManager.epiccfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "epic.yml"));
+        this.plugin.configManager.legendarycfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "legendary.yml"));
+        this.plugin.configManager.mythiccfg = YamlConfiguration.loadConfiguration(new File(plugin.getDataFolder(), "mythic.yml"));
     }
 
     public String getMessage(String file, String path) {

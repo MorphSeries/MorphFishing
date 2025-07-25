@@ -7,6 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 
 public final class MorphFishing extends JavaPlugin {
@@ -25,7 +26,11 @@ public final class MorphFishing extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3\\____|__  /\\____/|__|  |   __/|___|  /\\___  /   |__/____  >___|  /__|___|  /\\___  /"));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3        \\/             |__|        \\/     \\/            \\/     \\/        \\//_____/"));
         createConfig();
-        loadConfigManager();
+        try {
+            loadConfigManager();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
     }
 
@@ -50,7 +55,7 @@ public final class MorphFishing extends JavaPlugin {
         }
     }
 
-    public void loadConfigManager() {
+    public void loadConfigManager() throws IOException {
         this.configManager = new ConfigManager(this);
         this.configManager.setup();
     }

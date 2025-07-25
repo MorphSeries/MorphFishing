@@ -20,9 +20,8 @@ public class FishReload {
             Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("MorphFishing");
             if (this.plugin != null) {
                 this.plugin.reloadConfig();
-                this.plugin.getServer().getPluginManager().disablePlugin(plugin);
-                this.plugin.getServer().getPluginManager().enablePlugin(plugin);
-                sender.sendMessage(new Colorize().addColor("&aPlugin reloaded! (MORPH CHANGE THIS)"));
+                new ConfigManager(this.plugin).reloadConfigs();
+                sender.sendMessage(new Colorize().addColor(new ConfigManager(this.plugin).getMessage("messages", "Prefix") + new ConfigManager(this.plugin).getMessage("messages", "Commands.Admin.Reload")));
             }
         } else {
             sender.sendMessage(new Colorize().addColor("&cInvalid Permissions! (MORPH CHANGE THIS)"));

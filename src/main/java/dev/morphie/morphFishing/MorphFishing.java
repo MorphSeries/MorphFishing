@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public final class MorphFishing extends JavaPlugin {
 
+    public ConfigManager configManager;
     private File commonf, raref, epicf, legendaryf, mythicf;
 
     @Override
@@ -24,7 +25,7 @@ public final class MorphFishing extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3\\____|__  /\\____/|__|  |   __/|___|  /\\___  /   |__/____  >___|  /__|___|  /\\___  /"));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3        \\/             |__|        \\/     \\/            \\/     \\/        \\//_____/"));
         createConfig();
-        new ConfigManager().createFishConfigs();
+        loadConfigManager();
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
     }
 
@@ -47,5 +48,10 @@ public final class MorphFishing extends JavaPlugin {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void loadConfigManager() {
+        this.configManager = new ConfigManager(this);
+        this.configManager.setup();
     }
 }

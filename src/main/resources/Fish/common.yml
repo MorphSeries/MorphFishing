@@ -1,9 +1,15 @@
-# Test
-Common_Fish:
+common:
   '0':
-    Name: "&"
-    Tagline: ""
-    Material: COD
-    CustomModelId: 0
+    Name: "&b&lAtlantic bonito"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "&aS"
+    Glow: true
+    Biomes:
+      - 'OCEAN'
 
 

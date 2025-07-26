@@ -1,6 +1,7 @@
 package dev.morphie.morphFishing;
 
 import dev.morphie.morphFishing.commands.CommandsManager;
+import dev.morphie.morphFishing.events.FishEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.Bukkit;
@@ -13,10 +14,12 @@ import java.util.Objects;
 public final class MorphFishing extends JavaPlugin {
 
     public ConfigManager configManager;
-    private File commonf, raref, epicf, legendaryf, mythicf;
+    private FishEvent fe;
 
     @Override
     public void onEnable() {
+        this.fe = new FishEvent(this);
+        getServer().getPluginManager().registerEvents(this.fe, this);
         Objects.requireNonNull(getCommand("fish")).setExecutor(new CommandsManager(this));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3   _____                      .__    ___________.__       .__    .__                "));

@@ -1,0 +1,47 @@
+# ]==================================================================================================================================[
+#   _____                      .__    ___________.__       .__    .__
+#  /     \   _________________ |  |__ \_   _____/|__| _____|  |__ |__| ____    ____
+# /  \ /  \ /  _ \_  __ \____ \|  |  \ |    __)  |  |/  ___/  |  \|  |/    \  / ___\
+#/    Y    (  <_> )  | \/  |_> >   Y  \|     \   |  |\___ \|   Y  \  |   |  \/ /_/  >
+#\____|__  /\____/|__|  |   __/|___|  /\___  /   |__/____  >___|  /__|___|  /\___  /
+#        \/             |__|        \/     \/            \/     \/        \//_____/
+# ]==================================================================================================================================[
+#
+# Plugin Version: 1.0.0
+# Author Discord Name: morphie
+# Support Discord: http://discord.com/invite/6bnU9xn
+# Contributors: gmancash14, itsliambeans
+#
+# ]==================================================================================================================================[
+Settings:
+  # Enable or disable the plugin credits item in the /mf menu.
+  PluginCredits:
+    Enabled: false
+  # Enable or disable the plugins update checker. (Admins and Console messages for new plugin updates.)
+  UpdateChecker: true
+  # Enable or disable if every custom fish caught should contain "Caught by PLAYER on DATE"
+  FishCaughtBy: true
+  # Set this to your preferred weight metric. EX: "lbs"
+  FishWeightMetric: none
+  # Set this to your preferred currency symbol.
+  CurrencySymbol: "$"
+
+# ]==================================================================================================================================[
+# Fish Sell Prices
+
+CommonFishPrice: 100
+RareFishPrice: 250
+EpicFishPrice: 500
+LegendaryFishPrice: 750
+MythicFishPrice: 1000
+
+# ]==================================================================================================================================[
+# Fish Tier Catch Chance
+
+CommonFishChance: 30
+RareFishChance: 20
+EpicFishChance: 15
+LegendaryFishChance: 10
+MythicFishChance: 5
+
+# ]==================================================================================================================================[

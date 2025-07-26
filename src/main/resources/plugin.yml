@@ -2,7 +2,7 @@ name: MorphFishing
 version: '1.0.0'
 main: dev.morphie.morphFishing.MorphFishing
 api-version: '1.21'
-authors: [ Morphie ]
+authors: [ Morphie, gmancash14, itsliambeans ]
 depend: [MorphLib]
 description: A Minecraft plugin that allows setting of item names and lore.
 commands:

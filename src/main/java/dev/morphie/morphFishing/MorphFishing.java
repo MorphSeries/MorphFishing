@@ -3,8 +3,9 @@ package dev.morphie.morphFishing;
 import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.events.FishEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
-import dev.morphie.morphLib.string.Colorize;
+import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -13,7 +14,6 @@ import java.util.Objects;
 
 public final class MorphFishing extends JavaPlugin {
 
-    public ConfigManager configManager;
     private FishEvent fe;
 
     @Override
@@ -30,8 +30,8 @@ public final class MorphFishing extends JavaPlugin {
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3        \\/             |__|        \\/     \\/            \\/     \\/        \\//_____/"));
         createConfig();
         try {
-            loadConfigManager();
-        } catch (IOException e) {
+            ConfigManager.getInstance().loadConfigs();
+        } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
         }
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
@@ -58,8 +58,7 @@ public final class MorphFishing extends JavaPlugin {
         }
     }
 
-    public void loadConfigManager() throws IOException {
-        this.configManager = new ConfigManager(this);
-        this.configManager.setup();
+    public static MorphFishing getInstance() {
+        return getPlugin(MorphFishing.class);
     }
 }

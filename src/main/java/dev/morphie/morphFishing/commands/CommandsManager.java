@@ -1,11 +1,15 @@
 package dev.morphie.morphFishing.commands;
 
 import dev.morphie.morphFishing.MorphFishing;
-import dev.morphie.morphLib.string.Colorize;
+import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
+
+import java.io.IOException;
 
 public class CommandsManager implements CommandExecutor {
 
@@ -26,8 +30,16 @@ public class CommandsManager implements CommandExecutor {
                 }
                 return true;
             } else if (args[0].equalsIgnoreCase("reload")) {
-                // Sender (Including Console)
-                new FishReload(this.plugin).reloadCommand(sender, args);
+                // Sender (Including Console)`
+                try {
+                    new FishReload(this.plugin).reloadCommand(sender, args);
+                } catch (IOException | InvalidConfigurationException e) {
+                    throw new RuntimeException(e);
+                }
+                return true;
+            } else if (args[0].equalsIgnoreCase("test")) {
+                String material = ConfigManager.getInstance().getMessage("common", "common.0.Material");
+                sender.sendMessage(material);
                 return true;
             } else {
                 sender.sendMessage(new Colorize().addColor("&cInvlaid Arguments (Morphie replace this with messages.yml)"));

@@ -1,6 +1,7 @@
 common:
-  '0':
+  0:
     Name: "&b&lAtlantic bonito"
+    Tier: "&bCommon"
     Description:
       - '&7This will have a really cool description at some'
       - '&7point that itsliambeans will add telling you more'

@@ -3,7 +3,7 @@ package dev.morphie.morphFishing.events;
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.itemstack.ItemMaker;
-import dev.morphie.morphLib.utils.Colorize;
+import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -41,22 +41,25 @@ public class FishEvent implements Listener {
                 Biome biome = player.getWorld().getBiome(player.getLocation());
                 Inventory inventory = player.getInventory();
                 Random rand = new Random();
-                int chance = rand.nextInt(100);
-                if (chance <= plugin.getConfig().getInt("CommonFishChance")) {
-                    fish = createFish("common", player);
-                    dropFish(player.getWorld(), player.getLocation(), fish);
-                } else if (chance <= plugin.getConfig().getInt("RareFishChance")) {
-                    fish = createFish("rare", player);
-                    dropFish(player.getWorld(), player.getLocation(), fish);
-                } else  if (chance <= plugin.getConfig().getInt("EpicFishChance")) {
-                    fish = createFish("epic", player);
-                    dropFish(player.getWorld(), player.getLocation(), fish);
-                } else if (chance <= plugin.getConfig().getInt("LegendaryFishChance")) {
-                    fish = createFish("legendary", player);
-                    dropFish(player.getWorld(), player.getLocation(), fish);
-                } else if (chance <= plugin.getConfig().getInt("MythicFishChance")) {
-                    fish = createFish("mythic", player);
-                    dropFish(player.getWorld(), player.getLocation(), fish);
+                int fishChance = rand.nextInt(100);
+                if (fishChance <= plugin.getConfig().getInt("ChanceToCatchCustomFish")) {
+                    int chance = rand.nextInt(100);
+                    if (chance <= plugin.getConfig().getInt("MythicFishChance")) {
+                        fish = createFish("mythic", player);
+                        dropFish(player.getWorld(), player.getLocation(), fish);
+                    } else if (chance <= plugin.getConfig().getInt("LegendaryFishChance")) {
+                        fish = createFish("legendary", player);
+                        dropFish(player.getWorld(), player.getLocation(), fish);
+                    } else if (chance <= plugin.getConfig().getInt("EpicFishChance")) {
+                        fish = createFish("epic", player);
+                        dropFish(player.getWorld(), player.getLocation(), fish);
+                    } else if (chance <= plugin.getConfig().getInt("RareFishChance")) {
+                        fish = createFish("rare", player);
+                        dropFish(player.getWorld(), player.getLocation(), fish);
+                    } else if (chance <= plugin.getConfig().getInt("CommonFishChance")) {
+                        fish = createFish("common", player);
+                        dropFish(player.getWorld(), player.getLocation(), fish);
+                    }
                 }
             }
         }
@@ -75,13 +78,15 @@ public class FishEvent implements Listener {
         ArrayList<String> lore = new ArrayList<String>();
         lore.add("");
         lore.add(new Colorize().addColor("&3Tier&8: " + tier));
-        lore.add(new Colorize().addColor("&3Weight&8: &7&k1234 &a" + ConfigManager.getInstance().getMessage(type, type + "." + fish + "WeightClass")));
+        lore.add(new Colorize().addColor("&3Weight&8: &7&k1234 &a" + ConfigManager.getInstance().getMessage(type, type + "." + fish + ".WeightClass")));
         lore.add("");
         for (String s : ConfigManager.getInstance().getMessageList(type, type + "." + fish + ".Description")) {
             lore.add(new Colorize().addColor(s));
         }
         lore.add("");
-        lore.add(new Colorize().addColor("&aCaught by &3" + playerName + " &aon &3" + strDate));
+        if (plugin.getConfig().getBoolean("Settings.FishCaughtBy")) {
+            lore.add(new Colorize().addColor("&aCaught by &3" + playerName + " &aon &3" + strDate));
+        }
         Boolean glow = ConfigManager.getInstance().getBoolean(type, type + "." + fish + ".Glow");
         return new ItemMaker().makeItem(material, 1, CustomModelID, name, lore, glow, false);
     }

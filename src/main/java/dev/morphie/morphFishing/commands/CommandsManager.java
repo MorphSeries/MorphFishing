@@ -2,7 +2,7 @@ package dev.morphie.morphFishing.commands;
 
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
-import dev.morphie.morphLib.utils.Colorize;
+import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

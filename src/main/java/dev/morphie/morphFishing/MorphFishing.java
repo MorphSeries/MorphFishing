@@ -3,7 +3,7 @@ package dev.morphie.morphFishing;
 import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.events.FishEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
-import dev.morphie.morphLib.utils.Colorize;
+import dev.morphie.morphLib.string.Colorize;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;

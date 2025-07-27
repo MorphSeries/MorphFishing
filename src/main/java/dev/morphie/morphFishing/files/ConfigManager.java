@@ -92,10 +92,10 @@ public class ConfigManager {
         if (!charmsf.exists()) {
             MorphFishing.getInstance().saveResource("Menus" + File.separator + "charms.yml", false);
         }
-        if (questf.exists()) {
+        if (!questf.exists()) {
             MorphFishing.getInstance().saveResource("Menus" + File.separator + "quests.yml", false);
         }
-        if (workbenchf.exists()) {
+        if (!workbenchf.exists()) {
             MorphFishing.getInstance().saveResource("Menus" + File.separator + "workbenches.yml", false);
         }
         messagescfg = new YamlConfiguration();

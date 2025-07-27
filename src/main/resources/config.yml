@@ -37,6 +37,7 @@ MythicFishPrice: 1000
 
 # ]==================================================================================================================================[
 # Fish Tier Catch Chance
+# These are %'s out of 100. Default example is there is an 80% chance to catch a custom fish, 30% chance it would be a common fish.
 
 CommonFishChance: 30
 RareFishChance: 20

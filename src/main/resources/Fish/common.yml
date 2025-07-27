@@ -1,6 +1,6 @@
 common:
   0:
-    Name: "&b&lAtlantic bonito"
+    Name: "&b&lAtlantic Bonito"
     Tier: "&bCommon"
     Description:
       - '&7This will have a really cool description at some'
@@ -8,9 +8,22 @@ common:
       - '&7about this fish and stuff.'
     Material: "COD"
     CustomModelID: 0
-    WeightClass: "&aS"
+    WeightClass: "M"
     Glow: true
     Biomes:
       - 'OCEAN'
+  1:
+    Name: "&b&lGoldfish"
+    Tier: "&bCommon"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "XS"
+    Glow: true
+    Biomes:
+      - 'RIVER'
 
 

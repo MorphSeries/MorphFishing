@@ -1,1 +1,27 @@
-# Test
+epic:
+  0:
+    Name: "&c&lStonefish"
+    Tier: "&cEpic"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "S"
+    Glow: true
+    Biomes:
+      - 'OCEAN'
+  1:
+    Name: "&c&lParrotfish"
+    Tier: "&cEpic"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "L"
+    Glow: true
+    Biomes:
+      - 'OCEAN'

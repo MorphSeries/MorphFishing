@@ -1,1 +1,27 @@
-# Test
+mythic:
+  0:
+    Name: "&5&lBlackfin Cisco"
+    Tier: "&5Mythic"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "M"
+    Glow: true
+    Biomes:
+      - 'OCEAN'
+  1:
+    Name: "&5&lTecopa Pupfish"
+    Tier: "&5Mythic"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "XS"
+    Glow: true
+    Biomes:
+      - 'OCEAN'

@@ -1,1 +1,27 @@
-# Test
+legendary:
+  0:
+    Name: "&6&lSilver Arowana"
+    Tier: "&6Legendary"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "L"
+    Glow: true
+    Biomes:
+      - 'OCEAN'
+  1:
+    Name: "&6&lAlligator Gar"
+    Tier: "&6Legendary"
+    Description:
+      - '&7This will have a really cool description at some'
+      - '&7point that itsliambeans will add telling you more'
+      - '&7about this fish and stuff.'
+    Material: "COD"
+    CustomModelID: 0
+    WeightClass: "L"
+    Glow: true
+    Biomes:
+      - 'OCEAN'

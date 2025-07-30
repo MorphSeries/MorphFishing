@@ -3,7 +3,7 @@ package dev.morphie.morphFishing.events;
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.itemstack.ItemMaker;
-import dev.morphie.morphLib.string.Colorize;
+import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;

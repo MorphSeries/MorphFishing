@@ -1,0 +1,54 @@
+#
+#
+#
+#
+#
+# Each line in this list is a line in the GUI. Items are detected by the keys associated with them.
+# For Example: "j" is assigned to the Fishermans Journal item.
+# To make it easy I made items (buttons) letters and glass (filler) numbers. You can change the menu layout and
+# the items, but you cannot create new menu items.
+MenuLayout:
+  - '123444321'
+  - '25j5m5p52'
+  - '35q5l5c53'
+  - '35e555w53'
+  - '255r5s552'
+  - '123444321'
+MenuName: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ"
+
+MenuItems:
+  "1": # WARNING: These CANNOT be changed. You can change the item information below and the menu size and layout above.
+    Material: 'BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+    Lore: none
+  "2":
+    Material: 'LIGHT_BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+    Lore: none
+  "3":
+    Material: 'CYAN_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+    Lore: none
+  "4":
+    Material: 'LIME_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+    Lore: none
+  "5":
+    Material: 'GRAY_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+    Lore: none

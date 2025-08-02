@@ -1,7 +1,7 @@
 package dev.morphie.morphFishing.commands;
 
 import dev.morphie.morphFishing.MorphFishing;
-import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphFishing.menus.MainMenu;
 import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -37,10 +37,14 @@ public class CommandsManager implements CommandExecutor {
                     throw new RuntimeException(e);
                 }
                 return true;
-            } else if (args[0].equalsIgnoreCase("test")) {
-                String material = ConfigManager.getInstance().getMessage("common", "common.0.Material");
-                sender.sendMessage(material);
-                return true;
+            } else if (args[0].equalsIgnoreCase("menu")) {
+                if (sender instanceof Player) {
+                    Player p = ((Player) sender).getPlayer();
+                    new MainMenu(this.plugin).openMainGUI(p);
+                    return true;
+                } else {
+                    sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
+                }
             } else {
                 sender.sendMessage(new Colorize().addColor("&cInvlaid Arguments (Morphie replace this with messages.yml)"));
                 return true;

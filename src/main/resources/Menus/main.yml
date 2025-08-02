@@ -1,7 +1,7 @@
 #
 #
-#
-#
+# Name of the GUI. You can set this to a custom name for texture packs.
+MenuName: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ"
 #
 # Each line in this list is a line in the GUI. Items are detected by the keys associated with them.
 # For Example: "j" is assigned to the Fishermans Journal item.
@@ -14,41 +14,40 @@ MenuLayout:
   - '35e555w53'
   - '255r5s552'
   - '123444321'
-MenuName: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ"
+
+FillerItem: # This item will set anywhere there is a space in the menu layout. This is useful for custom textured gui's.
+  Material: ''
+  CustomModelID:
+  Enabled: false
 
 MenuItems:
   "1": # WARNING: These CANNOT be changed. You can change the item information below and the menu size and layout above.
-    Material: 'BLUE_STAINED_GLASS_PANE'
+    Material: 'BLUE_STAINED_GLASS_PANE' # The 5 glass items cannot have an item lore.
     Amount: 1
     CustomModelId: 0
     Glow: false
     Name: "&7"
-    Lore: none
   "2":
     Material: 'LIGHT_BLUE_STAINED_GLASS_PANE'
     Amount: 1
     CustomModelId: 0
     Glow: false
     Name: "&7"
-    Lore: none
   "3":
     Material: 'CYAN_STAINED_GLASS_PANE'
     Amount: 1
     CustomModelId: 0
     Glow: false
     Name: "&7"
-    Lore: none
   "4":
     Material: 'LIME_STAINED_GLASS_PANE'
     Amount: 1
     CustomModelId: 0
     Glow: false
     Name: "&7"
-    Lore: none
   "5":
     Material: 'GRAY_STAINED_GLASS_PANE'
     Amount: 1
     CustomModelId: 0
     Glow: false
     Name: "&7"
-    Lore: none

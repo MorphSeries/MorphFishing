@@ -51,3 +51,57 @@ MenuItems:
     CustomModelId: 0
     Glow: false
     Name: "&7"
+  "j":
+    Material: 'WRITABLE_BOOK'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lꜰɪꜱʜᴇʀᴍᴀɴ'ꜱ ᴊᴏᴜʀɴᴀʟ"
+    Lore:
+      - "&a| &7Click to open the Fisherman's journal"
+      - "&a| &7to review all custom fish!"
+    "q":
+      Material: 'MOJANG_BANNER_PATTERN'
+      Amount: 1
+      CustomModelId: 0
+      Glow: false
+      Name: "&3&lQᴜᴇꜱᴛꜱ"
+      Lore:
+        - "&a| &7Click to open the Quests menu to view"
+        - "&a| &7and complete fishing related quests!"
+    "e":
+      Material: 'BELL'
+      Amount: 1
+      CustomModelId: 0
+      Glow: false
+      Name: "&9&lꜰɪꜱʜɪɴɢ ᴇᴠᴇɴᴛꜱ"
+      Lore:
+        - "&a| &7Click to open the Fish Events menu"
+        - "&a| &7to track and vote on fishing events."
+    "m":
+      Material: 'LECTERN'
+      Amount: 1
+      CustomModelId: 0
+      Glow: false
+      Name: "&3&lꜰɪꜱʜ ᴍᴀʀᴋᴇᴛ"
+      Lore:
+        - "&a| &7Click to open the Fish Market menu"
+        - "&a| &7to sell your custom fish."
+    "l":
+      Material: 'TURTLE_SCUTE'
+      Amount: 1
+      CustomModelId: 0
+      Glow: false
+      Name: "&9&lʟᴜʀᴇꜱ ᴀɴᴅ ʙᴀɪᴛ"
+      Lore:
+        - "&a| &7Click to open the Lures and Bait menu"
+        - "&a| &7to view information about how to create them!"
+    "p":
+      Material: 'BUNDLE'
+      Amount: 1
+      CustomModelId: 0
+      Glow: false
+      Name: "&9&lꜰɪꜱʜᴇʀᴍᴀɴ'ꜱ ʙᴀɢ"
+      Lore:
+        - "&a| &7Click to open the Fisherman's Bag"
+        - "&a| &7to store your custom fish."

@@ -81,6 +81,16 @@ public class MainMenu {
                 new Colorize().addColor(ConfigManager.getInstance().getMessage("main",  "MenuItems.5.Name"))
         ));
 
+        // Fisherman's Journal
+        gui.addElement(new StaticGuiElement('j',
+                this.buildGuiItem("MenuItems.j"),
+                ConfigManager.getInstance().getInt("main", "MenuItems.j.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("main",  "MenuItems.j.Name"))
+        ));
+
 
         gui.show(p);
     }

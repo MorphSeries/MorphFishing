@@ -8,11 +8,11 @@ MenuName: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9C
 # To make it easy I made items (buttons) letters and glass (filler) numbers. You can change the menu layout and
 # the items, but you cannot create new menu items.
 MenuLayout:
-  - '123444321'
-  - '25j5m5p52'
-  - '35q5l5c53'
-  - '35e555w53'
-  - '255r5s552'
+  - '1234s4321'
+  - '255555552'
+  - '35mjqeb53'
+  - '355clw553'
+  - '255555552'
   - '123444321'
 
 FillerItem: # This item will set anywhere there is a space in the menu layout. This is useful for custom textured gui's.
@@ -51,6 +51,26 @@ MenuItems:
     CustomModelId: 0
     Glow: false
     Name: "&7"
+  "s":
+    Material: 'PLAYER_HEAD' #Setting an item to "PLAYER_HEAD" will display the players skull in the menu.
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lʏᴏᴜʀ ꜱᴛᴀᴛꜱ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Stats menu to view"
+      - "&a&l| &7your MorphFishing stats."
+  "m":
+    Material: 'LECTERN'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&3&lꜰɪꜱʜ ᴍᴀʀᴋᴇᴛ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Fish Market menu"
+      - "&a&l| &7to sell your custom fish."
   "j":
     Material: 'WRITABLE_BOOK'
     Amount: 1
@@ -58,50 +78,66 @@ MenuItems:
     Glow: false
     Name: "&9&lꜰɪꜱʜᴇʀᴍᴀɴ'ꜱ ᴊᴏᴜʀɴᴀʟ"
     Lore:
-      - "&a| &7Click to open the Fisherman's journal"
-      - "&a| &7to review all custom fish!"
-    "q":
-      Material: 'MOJANG_BANNER_PATTERN'
-      Amount: 1
-      CustomModelId: 0
-      Glow: false
-      Name: "&3&lQᴜᴇꜱᴛꜱ"
-      Lore:
-        - "&a| &7Click to open the Quests menu to view"
-        - "&a| &7and complete fishing related quests!"
-    "e":
-      Material: 'BELL'
-      Amount: 1
-      CustomModelId: 0
-      Glow: false
-      Name: "&9&lꜰɪꜱʜɪɴɢ ᴇᴠᴇɴᴛꜱ"
-      Lore:
-        - "&a| &7Click to open the Fish Events menu"
-        - "&a| &7to track and vote on fishing events."
-    "m":
-      Material: 'LECTERN'
-      Amount: 1
-      CustomModelId: 0
-      Glow: false
-      Name: "&3&lꜰɪꜱʜ ᴍᴀʀᴋᴇᴛ"
-      Lore:
-        - "&a| &7Click to open the Fish Market menu"
-        - "&a| &7to sell your custom fish."
-    "l":
-      Material: 'TURTLE_SCUTE'
-      Amount: 1
-      CustomModelId: 0
-      Glow: false
-      Name: "&9&lʟᴜʀᴇꜱ ᴀɴᴅ ʙᴀɪᴛ"
-      Lore:
-        - "&a| &7Click to open the Lures and Bait menu"
-        - "&a| &7to view information about how to create them!"
-    "p":
-      Material: 'BUNDLE'
-      Amount: 1
-      CustomModelId: 0
-      Glow: false
-      Name: "&9&lꜰɪꜱʜᴇʀᴍᴀɴ'ꜱ ʙᴀɢ"
-      Lore:
-        - "&a| &7Click to open the Fisherman's Bag"
-        - "&a| &7to store your custom fish."
+      - " "
+      - "&a&l| &7Click to open the Fisherman's journal"
+      - "&a&l| &7to review all custom fish!"
+  "q":
+    Material: 'MOJANG_BANNER_PATTERN'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&3&lQᴜᴇꜱᴛꜱ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Quests menu to view"
+      - "&a&l| &7and complete fishing related quests!"
+  "e":
+    Material: 'BELL'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lꜰɪꜱʜɪɴɢ ᴇᴠᴇɴᴛꜱ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Fish Events menu"
+      - "&a&l| &7to track and vote on fishing events."
+  "b":
+    Material: 'BUNDLE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&3&lꜰɪꜱʜᴇʀᴍᴀɴ'ꜱ ʙᴀɢ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Fisherman's Bag"
+      - "&a&l| &7to store your custom fish."
+  "c":
+    Material: 'AMETHYST_SHARD'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&3&lᴄʜᴀʀᴍꜱ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Charms menu to view"
+      - "&a&l| &7information about how to create them!"
+  "l":
+    Material: 'TURTLE_SCUTE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lʟᴜʀᴇꜱ ᴀɴᴅ ʙᴀɪᴛ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Lures and Bait menu"
+      - "&a&l| &7to view information about how to create them!"
+  "w":
+    Material: 'DAYLIGHT_DETECTOR'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&3&lᴡᴏʀᴋʙᴇɴᴄʜᴇꜱ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to open the Workbenches menu to view"
+      - "&a&l| &7information about how to create them!"

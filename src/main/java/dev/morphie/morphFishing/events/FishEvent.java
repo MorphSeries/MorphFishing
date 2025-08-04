@@ -88,7 +88,7 @@ public class FishEvent implements Listener {
             lore.add(new Colorize().addColor("&aCaught by &3" + playerName + " &aon &3" + strDate));
         }
         Boolean glow = ConfigManager.getInstance().getBoolean(type, type + "." + fish + ".Glow");
-        return new ItemMaker().makeItem(material, 1, CustomModelID, name, lore, glow, false);
+        return new ItemMaker().makeItem(material, 1, CustomModelID, name, lore, glow, false, player);
     }
 
     private void dropFish (World world, Location loc, ItemStack fish) {

@@ -9,12 +9,9 @@ import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.inventory.meta.SkullMeta;
 
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.function.BiConsumer;
 
 public class MainMenu {
 
@@ -32,7 +29,7 @@ public class MainMenu {
 
         //Filler Item
         if (ConfigManager.getInstance().getBoolean("main", "FillerItem.Enabled")) {
-            gui.setFiller(new ItemMaker().makeItem(Material.matchMaterial(ConfigManager.getInstance().getMessage("main", "FillerItem.Material")), 1, ConfigManager.getInstance().getInt("main", "FillerItem.CustomModelID"), "", null, false, false, p));
+            gui.setFiller(new ItemMaker().makeItem(Material.matchMaterial(ConfigManager.getInstance().getMessage("main", "FillerItem.Material")), 1, ConfigManager.getInstance().getInt("main", "FillerItem.CustomModelID"), "", null, false, false, p, null));
         }
 
         // Glass Item 1
@@ -202,6 +199,6 @@ public class MainMenu {
             loreList.add(new Colorize().addColor(s));
         }
         lore = String.join("\n", loreList);
-        return new ItemMaker().makeItem(material, amount, CustomModelID, "", loreList, glow, false, p);
+        return new ItemMaker().makeItem(material, amount, CustomModelID, "", loreList, glow, false, p, null);
     }
 }

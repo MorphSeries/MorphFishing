@@ -17,10 +17,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.text.Format;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Random;
-import java.util.UUID;
+import java.util.*;
 
 public class FishEvent implements Listener {
 
@@ -43,23 +40,8 @@ public class FishEvent implements Listener {
                 Random rand = new Random();
                 int fishChance = rand.nextInt(100);
                 if (fishChance <= plugin.getConfig().getInt("ChanceToCatchCustomFish")) {
-                    int chance = rand.nextInt(100);
-                    if (chance <= plugin.getConfig().getInt("MythicFishChance")) {
-                        fish = createFish("mythic", player);
-                        dropFish(player.getWorld(), player.getLocation(), fish);
-                    } else if (chance <= plugin.getConfig().getInt("LegendaryFishChance")) {
-                        fish = createFish("legendary", player);
-                        dropFish(player.getWorld(), player.getLocation(), fish);
-                    } else if (chance <= plugin.getConfig().getInt("EpicFishChance")) {
-                        fish = createFish("epic", player);
-                        dropFish(player.getWorld(), player.getLocation(), fish);
-                    } else if (chance <= plugin.getConfig().getInt("RareFishChance")) {
-                        fish = createFish("rare", player);
-                        dropFish(player.getWorld(), player.getLocation(), fish);
-                    } else if (chance <= plugin.getConfig().getInt("CommonFishChance")) {
-                        fish = createFish("common", player);
-                        dropFish(player.getWorld(), player.getLocation(), fish);
-                    }
+                    fish = createFish(returnFishTier(), player);
+                    dropFish(player.getWorld(), player.getLocation(), fish);
                 }
             }
         }
@@ -96,13 +78,34 @@ public class FishEvent implements Listener {
         world.dropItem(loc, fish);
     }
 
+    private String returnFishTier() {
+        SortedMap<Integer, String> items = new TreeMap<>();
+        items.put(plugin.getConfig().getInt("CommonFishChance"), "common");
+        items.put(plugin.getConfig().getInt("RareFishChance"), "rare");
+        items.put(plugin.getConfig().getInt("EpicFishChance"), "epic");
+        items.put(plugin.getConfig().getInt("LegendaryFishChance"), "legendary");
+        items.put(plugin.getConfig().getInt("MythicFishChance"), "mythic");
+
+        final Random random = new Random();
+        final int actualValue = random.nextInt(100);
+        int sum = 0;
+        String actualName = "";
+
+        for (Map.Entry<Integer, ? extends String> entry: items.entrySet()) {
+            sum += entry.getKey();
+            if (sum > actualValue) {
+                actualName = entry.getValue();
+                break;
+            }
+        }
+        return actualName;
+    }
+
     private int getFish(String type) {
         int i = 0;
         while (ConfigManager.getInstance().getMessage(type, type + "." + i + ".Name") != null) {
             i++;
         }
-        i--;
-
         return i;
     }
 }

@@ -87,7 +87,7 @@ public class MainMenu {
                 lore
         ));
 
-        // Fish Market
+        // Player Stats
         gui.addElement(new StaticGuiElement('s',
                 this.buildGuiItem("MenuItems.s", p),
                 ConfigManager.getInstance().getInt("main", "MenuItems.s.Amount"),
@@ -103,6 +103,7 @@ public class MainMenu {
                 this.buildGuiItem("MenuItems.m", p),
                 ConfigManager.getInstance().getInt("main", "MenuItems.m.Amount"),
                 click -> {
+                    new Market(plugin).openMarketGUI(p);
                     return true;
                 },
                 new Colorize().addColor(ConfigManager.getInstance().getMessage("main",  "MenuItems.m.Name")),

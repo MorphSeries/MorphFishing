@@ -1,7 +1,15 @@
 # ]====================================================================================================================[
 
 Prefix: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &8» "
+ErrorPrefix: "&#ff5555&l&o[&#ff6851&l&o!&#ff7a4d&l&o] &#ff9f45&l&oᴇ&#ffb241&l&oʀ&#ffc43d&l&oʀ&#ffd739&l&oᴏ&#ffe935&l&oʀ &8» "
 
 Commands:
+  Header: "&7[]&m===============&r&7[] &#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &7[]&m===============&r&7[]"
+  Footer: "&7[]&m================================================&r&7[]"
+  Main: " &a&l| &3/mf &8- &7Opens this command help menu."
+  Menu: " &a&l| &3/mf menu &8- &7Opens the main MorphFishing menu."
+  Market: " &a&l| &3/mf market &8- &7Opens the fish market menu."
   Admin:
-    Reload: "&aPlugin files have successfully been reloaded!"
+    Reload: "&9[Admin] &3/mf reload &8- &7Reloads the plugins configuration files."
+
+ReloadMessage: "&7Plugin files have &asuccessfully &7been reloaded!"

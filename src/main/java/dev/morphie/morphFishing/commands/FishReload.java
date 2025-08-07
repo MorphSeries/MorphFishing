@@ -24,7 +24,7 @@ public class FishReload {
             if (this.plugin != null) {
                 this.plugin.reloadConfig();
                 ConfigManager.getInstance().loadConfigs();
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "Commands.Admin.Reload")));
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "ReloadMessage")));
             }
         } else {
             sender.sendMessage(new Colorize().addColor("&cInvalid Permissions! (MORPH CHANGE THIS)"));

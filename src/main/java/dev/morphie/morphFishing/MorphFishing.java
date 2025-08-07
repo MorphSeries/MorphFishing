@@ -4,8 +4,10 @@ import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.events.FishEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphLib.utils.Colorize;
+import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -15,6 +17,7 @@ import java.util.Objects;
 public final class MorphFishing extends JavaPlugin {
 
     private FishEvent fe;
+    public static Economy econ = null;
 
     @Override
     public void onEnable() {
@@ -33,6 +36,11 @@ public final class MorphFishing extends JavaPlugin {
             ConfigManager.getInstance().loadConfigs();
         } catch (IOException | InvalidConfigurationException e) {
             throw new RuntimeException(e);
+        }
+        if (!setupEconomy()) {
+            getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", new Object[] { getDescription().getName() }));
+            getServer().getPluginManager().disablePlugin(this);
+            return;
         }
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
     }
@@ -56,6 +64,18 @@ public final class MorphFishing extends JavaPlugin {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean setupEconomy() {
+        if (getServer().getPluginManager().getPlugin("Vault") == null) {
+            return false;
+        }
+        RegisteredServiceProvider<Economy> rsp = getServer().getServicesManager().getRegistration(Economy.class);
+        if (rsp == null) {
+            return false;
+        }
+        econ = (Economy)rsp.getProvider();
+        return econ != null;
     }
 
     public static MorphFishing getInstance() {

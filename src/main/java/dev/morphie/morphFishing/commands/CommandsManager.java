@@ -2,6 +2,7 @@ package dev.morphie.morphFishing.commands;
 
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.menus.MainMenu;
+import dev.morphie.morphFishing.menus.Market;
 import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -24,7 +25,13 @@ public class CommandsManager implements CommandExecutor {
             if (args.length == 0) {
                 // Player Only
                 if (sender instanceof Player) {
-                    sender.sendMessage(new Colorize().addColor("&3You smell!"));
+                    try {
+                        new CommandHelp(this.plugin).helpCommand(sender, args);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    } catch (InvalidConfigurationException e) {
+                        throw new RuntimeException(e);
+                    }
                 } else {
                     sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
                 }
@@ -41,6 +48,14 @@ public class CommandsManager implements CommandExecutor {
                 if (sender instanceof Player) {
                     Player p = ((Player) sender).getPlayer();
                     new MainMenu(this.plugin).openMainGUI(p);
+                    return true;
+                } else {
+                    sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
+                }
+            } else if (args[0].equalsIgnoreCase("market")) {
+                if (sender instanceof Player) {
+                    Player p = ((Player) sender).getPlayer();
+                    new Market(plugin).openMarketGUI(p);
                     return true;
                 } else {
                     sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));

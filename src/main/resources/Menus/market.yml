@@ -1,0 +1,78 @@
+
+# Name of the GUI. You can set this to a custom name for texture packs.
+MenuName: "&#5555ff&l&oꜰ&#5562f2&l&oɪ&#556fe5&l&oꜱ&#557cd8&l&oʜ&#5589cb&l&oɪ&#5596be&l&oɴ&#55a3b1&l&oɢ &#55be96&l&oᴍ&#55cb89&l&oᴀ&#55d87c&l&oʀ&#55e56f&l&oᴋ&#55f262&l&oᴇ&#55ff55&l&oᴛ"
+
+MenuLayout: # Support for up to 27 sell slots 'f'; Menu will not function if more than 27 slots are assigned.
+  - 'fffffffff'
+  - 'fffffffff'
+  - 'fffffffff'
+  - 'i32b1s23m'
+
+FillerItem: # This item will set anywhere there is a space in the menu layout. This is useful for custom textured gui's.
+  Material: ''
+  CustomModelID:
+  Enabled: false
+
+MenuItems:
+  "1": # WARNING: These CANNOT be changed. You can change the item information below and the menu size and layout above.
+    Material: 'BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "2":
+    Material: 'LIGHT_BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "3":
+    Material: 'CYAN_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "i":
+    Material: 'KNOWLEDGE_BOOK' #Setting an item to "PLAYER_HEAD" will display the players skull in the menu.
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lɪɴꜰᴏʀᴍᴀᴛɪᴏɴ&8:"
+    Lore:
+      - " "
+      - "&a&l| &7Place your fish into this menu and close"
+      - "&a&l| &7it to automatically sell them!"
+      - " "
+      - "&a&l| &3&lFish Prices&8:"
+      - "&a&l| &7Common&8: &a%CURRENCY_SYMBOL%%COMMON_PRICE%"
+      - "&a&l| &7Rare&8: &a%CURRENCY_SYMBOL%%RARE_PRICE%"
+      - "&a&l| &7Epic&8: &a%CURRENCY_SYMBOL%%EPIC_PRICE%"
+      - "&a&l| &7Legendary&8: &a%CURRENCY_SYMBOL%%LEGENDARY_PRICE%"
+      - "&a&l| &7Mythic&8: &a%CURRENCY_SYMBOL%%MYTHIC_PRICE%"
+  "b":
+    Material: 'ARROW'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&c&lʙᴀᴄᴋ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to go back to the main menu."
+  "s":
+    Material: 'EMERALD'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lꜱᴇʟʟ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to sell all fish in this menu."
+  "m":
+    Material: 'BARREL'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lʙᴀɪᴛ ꜱʜᴏᴘ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to access the bait shop!"

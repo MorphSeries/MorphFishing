@@ -112,10 +112,11 @@ public class Market {
                 lore
         ));
 
-        Inventory inv = Bukkit.createInventory(null, InventoryType.CHEST);
-        gui.addElement(new GuiStorageElement('f', inv));
+        int slots = ConfigManager.getInstance().getInt("market", "SellSlots");
+        Inventory sellInv = Bukkit.createInventory(null, slots);
+        gui.addElement(new GuiStorageElement('f', sellInv));
         gui.setCloseAction(close -> {
-            new FishHandlers(plugin).payFish(inv, p);
+            new FishHandlers(plugin).payFish(sellInv, p);
             return false; // Don't go back to the previous GUI (true would automatically go back to the previously opened one)
         });
 

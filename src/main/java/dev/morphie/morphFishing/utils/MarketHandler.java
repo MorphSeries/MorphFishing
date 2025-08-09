@@ -11,10 +11,10 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.function.Function;
 
-public class FishHandlers {
+public class MarketHandler {
 
     private MorphFishing plugin;
-    public FishHandlers(MorphFishing plugin) {
+    public MarketHandler(MorphFishing plugin) {
         this.plugin = plugin;
     }
 
@@ -58,7 +58,7 @@ public class FishHandlers {
                         }
                     }
                 } else {
-                    p.getInventory().addItem(new ItemStack[] { item });
+                    new ItemHandlers().giveItem(p, p.getWorld(), p.getLocation(), item, "feet");
                 }
             }
         }

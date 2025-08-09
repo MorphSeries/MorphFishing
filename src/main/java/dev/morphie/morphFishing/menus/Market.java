@@ -5,13 +5,12 @@ import de.themoep.inventorygui.InventoryGui;
 import de.themoep.inventorygui.StaticGuiElement;
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
-import dev.morphie.morphFishing.utils.FishHandlers;
+import dev.morphie.morphFishing.utils.MarketHandler;
 import dev.morphie.morphLib.itemstack.ItemMaker;
 import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -116,7 +115,7 @@ public class Market {
         Inventory sellInv = Bukkit.createInventory(null, slots);
         gui.addElement(new GuiStorageElement('f', sellInv));
         gui.setCloseAction(close -> {
-            new FishHandlers(plugin).payFish(sellInv, p);
+            new MarketHandler(plugin).payFish(sellInv, p);
             return false; // Don't go back to the previous GUI (true would automatically go back to the previously opened one)
         });
 

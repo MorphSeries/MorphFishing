@@ -66,7 +66,7 @@ public class MarketHandler {
         if ((money != 0) && (fish != 0)) {
             MorphFishing.econ.depositPlayer(p, money);
             String currencySymbol = plugin.getConfig().getString("Settings.CurrencySymbol");
-            p.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + "&7You sold &3" + fish + " &7fish for &a" + currencySymbol + money + "&7!"));
+            p.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "MarketSellMessage").replace("%FISH%", "" + fish).replace("%CURRENCY_SYMBOL%", currencySymbol).replace("%MONEY%", "" + money)));
         }
     }
 }

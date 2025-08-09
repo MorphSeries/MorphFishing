@@ -1,6 +1,7 @@
 package dev.morphie.morphFishing.commands;
 
 import dev.morphie.morphFishing.MorphFishing;
+import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphFishing.menus.MainMenu;
 import dev.morphie.morphFishing.menus.Market;
 import dev.morphie.morphLib.utils.Colorize;
@@ -9,6 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
+import org.eclipse.aether.util.ConfigUtils;
 
 import java.io.IOException;
 
@@ -33,7 +35,8 @@ public class CommandsManager implements CommandExecutor {
                         throw new RuntimeException(e);
                     }
                 } else {
-                    sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
+
                 }
                 return true;
             } else if (args[0].equalsIgnoreCase("reload")) {
@@ -50,7 +53,8 @@ public class CommandsManager implements CommandExecutor {
                     new MainMenu(this.plugin).openMainGUI(p);
                     return true;
                 } else {
-                    sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
+
                 }
             } else if (args[0].equalsIgnoreCase("market")) {
                 if (sender instanceof Player) {
@@ -58,10 +62,11 @@ public class CommandsManager implements CommandExecutor {
                     new Market(plugin).openMarketGUI(p);
                     return true;
                 } else {
-                    sender.sendMessage(new Colorize().addColor("&cOnly players can run this command!"));
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
+
                 }
             } else {
-                sender.sendMessage(new Colorize().addColor("&cInvlaid Arguments (Morphie replace this with messages.yml)"));
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidArguments")));
                 return true;
             }
         }

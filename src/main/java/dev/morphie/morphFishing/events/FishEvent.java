@@ -26,7 +26,6 @@ public class FishEvent implements Listener {
         this.plugin = plugin;
     }
 
-
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
         Player p = event.getPlayer();

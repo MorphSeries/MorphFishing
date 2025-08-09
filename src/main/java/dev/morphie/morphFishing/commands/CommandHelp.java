@@ -31,7 +31,7 @@ public class CommandHelp {
             sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Footer")));
             sender.sendMessage(" ");
         } else {
-            sender.sendMessage(new Colorize().addColor("&cInvalid Permissions! (MORPH CHANGE THIS)"));
+            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
         }
     }
 }

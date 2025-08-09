@@ -27,7 +27,7 @@ public class FishReload {
                 sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "ReloadMessage")));
             }
         } else {
-            sender.sendMessage(new Colorize().addColor("&cInvalid Permissions! (MORPH CHANGE THIS)"));
+            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
         }
     }
 }

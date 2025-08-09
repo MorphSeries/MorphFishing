@@ -1,8 +1,12 @@
 # ]====================================================================================================================[
-
+# Please note: All menu messages will be in their respective menu ymls.
+# ]====================================================================================================================[
+# Plugin Prefixes
 Prefix: "&#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &8» "
 ErrorPrefix: "&#ff5555&l&o[&#ff6851&l&o!&#ff7a4d&l&o] &#ff9f45&l&oᴇ&#ffb241&l&oʀ&#ffc43d&l&oʀ&#ffd739&l&oᴏ&#ffe935&l&oʀ &8» "
 
+# ]====================================================================================================================[
+# /mf | Command help menu
 Commands:
   Header: "&7[]&m===============&r&7[] &#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &7[]&m===============&r&7[]"
   Footer: "&7[]&m================================================&r&7[]"
@@ -12,4 +16,14 @@ Commands:
   Admin:
     Reload: "&9[Admin] &3/mf reload &8- &7Reloads the plugins configuration files."
 
-ReloadMessage: "&7Plugin files have &asuccessfully &7been reloaded!"
+
+# ]====================================================================================================================[
+# Normal Messages
+ReloadMessage: "&7Plugin files have &successfully &7been reloaded!"
+MarketSellMessage: "&7You sold &3%FISH% &7fish for &a%CURRENCY_SYMBOL%%MONEY%&7!"
+
+# ]====================================================================================================================[
+# Error Messages
+InvalidPermissions: "&cYou do not have sufficient permissions."
+InvalidArguments: "&cInvalid arguments! Use &7/mf &cto view all plugin commands."
+PlayerOnlyCommand: "&cOnly players can run this command!"

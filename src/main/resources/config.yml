@@ -27,6 +27,32 @@ Settings:
   CurrencySymbol: "$"
 
 # ]==================================================================================================================================[
+# Storage method, can be MySQL, Redis, or SQLite (Default)
+StorageMethod: "SQLite"
+
+# Requires 'StorageMethod' to be SQLite
+SQLite:
+  TablePrefix: 'mf_'
+
+# Requires 'StorageMethod' to be MySQL
+MySQL:
+  Username: "root"
+  Password: "password"
+  Host: "localhost"
+  Port: 3306
+  SSL: false
+  Database: "minecraft"
+  TablePrefix: "mf_"
+
+# Requires 'StorageMethod' to be Redis
+Redis:
+  Hostname: "localhost"
+  Port: 11111
+  Password: "password"
+  SSL: false
+  KeyPrefix: "mf_"
+
+# ]==================================================================================================================================[
 # Fish Sell Prices
 
 CommonFishPrice: 100

@@ -31,6 +31,13 @@ public class Market {
         InventoryGui gui = new InventoryGui(plugin, p, new Colorize().addColor(ConfigManager.getInstance().getMessage("market", "MenuName")), guiSetup);
         UUID uuid = p.getUniqueId();
 
+        String currencySymbol = plugin.getConfig().getString("Settings.CurrencySymbol");
+        int commonPrice = this.plugin.getConfig().getInt("CommonFishPrice");
+        int rarePrice = this.plugin.getConfig().getInt("RareFishPrice");
+        int epicPrice = this.plugin.getConfig().getInt("EpicFishPrice");
+        int legendaryPrice = this.plugin.getConfig().getInt("LegendaryFishPrice");
+        int mythicPrice = this.plugin.getConfig().getInt("MythicFishPrice");
+
         // Glass Item 1
         gui.addElement(new StaticGuiElement('1',
                 this.buildGuiItem("MenuItems.1", p),
@@ -72,7 +79,7 @@ public class Market {
                     return true;
                 },
                 new Colorize().addColor(ConfigManager.getInstance().getMessage("market",  "MenuItems.i.Name")),
-                lore
+                lore.replace("%CURRENCY_SYMBOL%", currencySymbol).replace("%COMMON_PRICE%", "" + commonPrice).replace("%RARE_PRICE%", "" + rarePrice).replace("%EPIC_PRICE%", "" + epicPrice).replace("%LEGENDARY_PRICE%", "" + legendaryPrice).replace("%MYTHIC_PRICE%", "" + mythicPrice)
         ));
 
         // Back

@@ -2,7 +2,9 @@ package dev.morphie.morphFishing;
 
 import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.events.FishEvent;
+import dev.morphie.morphFishing.events.PlayerJoinEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphFishing.utils.database.SQLite;
 import dev.morphie.morphLib.utils.Colorize;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -17,12 +19,15 @@ import java.util.Objects;
 public final class MorphFishing extends JavaPlugin {
 
     private FishEvent fe;
+    private PlayerJoinEvent pj;
     public static Economy econ = null;
 
     @Override
     public void onEnable() {
         this.fe = new FishEvent(this);
+        this.pj = new PlayerJoinEvent(this);
         getServer().getPluginManager().registerEvents(this.fe, this);
+        getServer().getPluginManager().registerEvents(this.pj, this);
         Objects.requireNonNull(getCommand("fish")).setExecutor(new CommandsManager(this));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&3   _____                      .__    ___________.__       .__    .__                "));
@@ -41,6 +46,14 @@ public final class MorphFishing extends JavaPlugin {
             getLogger().severe(String.format("[%s] - Disabled due to no Vault dependency found!", new Object[] { getDescription().getName() }));
             getServer().getPluginManager().disablePlugin(this);
             return;
+        }
+        if (this.getConfig().getString("StorageMethod").equals("SQLite")) {
+            new SQLite(this).sqliteSetup();
+            new SQLite(this).checkStructure();
+            Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&9Storage Type&8: &aSQLite"));
+        } else {
+            Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&cDisabled due to invalid storage method selected in the config.yml"));
+            getServer().getPluginManager().disablePlugin(this);
         }
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
     }

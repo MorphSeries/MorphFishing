@@ -26,6 +26,7 @@ public class FishEvent implements Listener {
         this.plugin = plugin;
     }
 
+
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
         Player p = event.getPlayer();
@@ -91,6 +92,7 @@ public class FishEvent implements Listener {
                 break;
             }
         }
+
         return actualName;
     }
 

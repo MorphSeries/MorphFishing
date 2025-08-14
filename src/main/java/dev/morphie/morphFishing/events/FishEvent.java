@@ -5,6 +5,7 @@ import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphFishing.utils.ItemHandlers;
 import dev.morphie.morphLib.itemstack.ItemMaker;
 import dev.morphie.morphLib.utils.Colorize;
+import dev.morphie.morphLib.utils.StringUtils;
 import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.entity.Player;
@@ -26,6 +27,8 @@ public class FishEvent implements Listener {
         this.plugin = plugin;
     }
 
+    String name;
+    String tier;
 
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
@@ -40,6 +43,8 @@ public class FishEvent implements Listener {
                 int fishChance = rand.nextInt(100);
                 if (fishChance <= plugin.getConfig().getInt("ChanceToCatchCustomFish")) {
                     fish = createFish(returnFishTier(), p);
+                    String caughtMessage = ConfigManager.getInstance().getMessage("messages", "FishCaughtActionBar").replace("%TIER%", tier).replace("%FISH_NAME%", name);
+                    new StringUtils().ActionBar(new Colorize().addColor(caughtMessage), p);
                     new ItemHandlers().giveItem(p, p.getWorld(), p.getLocation(), fish, "feet");
                 }
             }
@@ -51,8 +56,8 @@ public class FishEvent implements Listener {
         int fish = rand.nextInt(this.getFish(type));
         Material material = Material.matchMaterial(ConfigManager.getInstance().getMessage(type, type + "." + fish + ".Material"));
         int CustomModelID = ConfigManager.getInstance().getInt(type, type + "." + fish + ".CustomModelID");
-        String name = new Colorize().addColor(ConfigManager.getInstance().getMessage(type, type + "." + fish + ".Name"));
-        String tier = new Colorize().addColor(ConfigManager.getInstance().getMessage(type, type + "." + fish + ".Tier"));
+        name = new Colorize().addColor(ConfigManager.getInstance().getMessage(type, type + "." + fish + ".Name"));
+        tier = new Colorize().addColor(ConfigManager.getInstance().getMessage(type, type + "." + fish + ".Tier"));
         Format f = new SimpleDateFormat("MM/dd/yy");
         String strDate = f.format(new Date());
         String playerName = p.getName();

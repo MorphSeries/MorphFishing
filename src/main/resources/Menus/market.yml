@@ -2,7 +2,7 @@
 # Name of the GUI. You can set this to a custom name for texture packs.
 MenuName: "&#5555ff&l&oꜰ&#5562f2&l&oɪ&#556fe5&l&oꜱ&#557cd8&l&oʜ&#5589cb&l&oɪ&#5596be&l&oɴ&#55a3b1&l&oɢ &#55be96&l&oᴍ&#55cb89&l&oᴀ&#55d87c&l&oʀ&#55e56f&l&oᴋ&#55f262&l&oᴇ&#55ff55&l&oᴛ"
 
-SellSlots: 40 #This will be the amount of slots each 'f' is assigned to. Please note that this has to be in full rows of 0-8
+SellSlots: 45 #This will be the amount of slots each 'f' is assigned to. Please note that this has to be in full rows of 9. 9 x 5 = 45
 MenuLayout: #If 'f' is not assigned players will not be able to sell fish.
   - 'fffffffff'
   - 'fffffffff'

@@ -1,9 +1,9 @@
 package dev.morphie.morphFishing.utils;
 
-import de.tr7zw.nbtapi.NBT;
-import de.tr7zw.nbtapi.iface.ReadableItemNBT;
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphLib.nbtapi.NBT;
+import dev.morphie.morphLib.nbtapi.iface.ReadableItemNBT;
 import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

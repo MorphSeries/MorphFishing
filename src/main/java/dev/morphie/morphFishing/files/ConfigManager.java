@@ -1,6 +1,7 @@
 package dev.morphie.morphFishing.files;
 
 import dev.morphie.morphFishing.MorphFishing;
+import dev.morphie.morphLib.MorphLib;
 import dev.morphie.morphLib.utils.Colorize;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;

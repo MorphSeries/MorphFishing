@@ -19,8 +19,9 @@ Commands:
 
 # ]====================================================================================================================[
 # Normal Messages
-ReloadMessage: "&7Plugin files have &successfully &7been reloaded!"
+ReloadMessage: "&7Plugin files have &asuccessfully &7been reloaded!"
 MarketSellMessage: "&7You sold &3%FISH% &7fish for &a%CURRENCY_SYMBOL%%MONEY%&7!"
+FishCaughtActionBar: "&7You caught a %TIER% %FISH_NAME% &7!"
 
 # ]====================================================================================================================[
 # Error Messages

@@ -1,0 +1,56 @@
+# ]==================================================================================================================================[
+# If the plugins fishing events should automatically start.
+EventsAutoStart: true
+# Number of players needed for an event to start.
+MinimumPlayers: 5
+# List of events that it will randomly select when starting an event.
+EventTypes:
+  - 'GLOBAL_CAUGHT'
+  - 'GLOBAL_LENGTH'
+  - 'MOST_CAUGHT'
+  - 'LONGEST_LENGTH'
+  - 'SHORTEST_LENGTH'
+  - 'TOTAL_LENGTH'
+
+# ]==================================================================================================================================[
+# Settings for each event type.
+Events:
+  GLOBAL_CAUGHT:
+    Duration: 3600
+    BossBar:
+      Enabled: true
+      Message: "&3&lGlobal Caught &7Fishing Event&8: &b%time% &7left."
+    Rewards:
+      Participation:
+        - 'mf gillings add %player% 100'
+      EventWon:
+        - 'mf gillings add %player% 500'
+        - 'eco give %player% 1000'
+  GLOBAL_LENGTH:
+    Duration: 3600
+    BossBar:
+      Enabled: true
+      Message: "&3&lGlobal Length &7Fishing Event&8: &b%time% &7left."
+    Rewards:
+      Participation:
+        - 'mf gillings add %player% 100'
+      EventWon:
+        - 'mf gillings add %player% 500'
+        - 'eco give %player% 1000'
+  MOST_CAUGHT:
+    Duration: 3600
+    BossBar:
+      Enabled: true
+      Message: "&3&lMost Caught &7Fishing Event&8: &b%time% &7left."
+    Rewards:
+      Participation:
+        - 'mf gillings add %player% 100'
+      FirstPlace:
+        - 'mf gillings add %player% 500'
+        - 'eco give %player% 1000'
+      SecondPlace:
+        - 'mf gillings add %player% 300'
+        - 'eco give %player% 700'
+      ThirdPlace:
+        - 'mf gillings add %player% 100'
+        - 'eco give %player% 500'

@@ -32,7 +32,8 @@ StorageMethod: "SQLite"
 
 # Requires 'StorageMethod' to be SQLite
 SQLite:
-  TablePrefix: 'mf_'
+  StatsTablePrefix: 'mf_'
+  EventsTablePrefix: 'mfe_'
 
 # Requires 'StorageMethod' to be MySQL
 MySQL:
@@ -54,7 +55,6 @@ Redis:
 
 # ]==================================================================================================================================[
 # Fish Sell Prices
-
 CommonFishPrice: 100
 RareFishPrice: 250
 EpicFishPrice: 500
@@ -64,12 +64,31 @@ MythicFishPrice: 1000
 # ]==================================================================================================================================[
 # Fish Tier Catch Chance
 # These are %'s out of 100. Default example is there is an 50% chance to catch a custom fish, 35% chance it would be a common fish.
-
 ChanceToCatchCustomFish: 50
-CommonFishChance: 75
-RareFishChance: 45
-EpicFishChance: 25
-LegendaryFishChance: 10
-MythicFishChance: 5
+
+# The chances below need to equal 100 when all added together.
+CommonFishChance: 70
+RareFishChance: 24
+EpicFishChance: 12
+LegendaryFishChance: 3
+MythicFishChance: 1
 
 # ]==================================================================================================================================[
+# Player Leveling System
+PlayerLevel:
+  BaseXPIncrease: 550 # XP Requirement Increase for each level
+  BaseCommonFishXP: 50
+  BaseRareFishXP: 100
+  BaseEpicFishXP: 250
+  BaseLegendaryFishXP: 500
+  BaseMythicFishXP: 1000
+
+# ]==================================================================================================================================[
+# Gillings
+# The amount of Gillings a player earns when catching custom fish.
+Gillings:
+  BaseCommonGillings: 10
+  BaseRareGillings: 25
+  BaseEpicGillings: 75
+  BaseLegendaryGillings: 150
+  BaseMythicGillings: 250

@@ -97,7 +97,7 @@ public class FishEvent implements Listener {
                 break;
             }
         }
-
+        items.clear();
         return actualName;
     }
 

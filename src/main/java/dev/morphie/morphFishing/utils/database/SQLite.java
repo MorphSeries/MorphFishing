@@ -55,6 +55,7 @@ public class SQLite {
                     + "uuid TEXT NULL DEFAULT NULL, "
                     + "mf_level INTEGER NOT NULL DEFAULT 0, "
                     + "mf_xp INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_required_xp INTEGER NOT NULL DEFAULT 0, "
                     + "gillings INTEGER NOT NULL DEFAULT 0, "
                     + "fish_caught INTEGER NOT NULL DEFAULT 0, "
                     + "common_caught INTEGER NOT NULL DEFAULT 0, "
@@ -98,14 +99,15 @@ public class SQLite {
                 "(uuid, " + // 1
                 "mf_level, " + // 2
                 "mf_xp, " + // 3
-                "gillings, " + // 4
-                "fish_caught, " + // 5
-                "common_caught, " + // 6
-                "rare_caught, " + // 7
-                "epic_caught, " + // 8
-                "legendary_caught, " + // 9
-                "mythic_caught) " + // 10
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "mf_required_xp, " +// 4
+                "gillings, " + // 5
+                "fish_caught, " + // 6
+                "common_caught, " + // 7
+                "rare_caught, " + // 8
+                "epic_caught, " + // 9
+                "legendary_caught, " + // 10
+                "mythic_caught) " + // 11
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Use a try-with-resources block to manage connection and statement
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
@@ -122,6 +124,7 @@ public class SQLite {
                 insert.setInt(8, 0);
                 insert.setInt(9, 0);
                 insert.setInt(10, 0);
+                insert.setInt(11, 0);
 
                 insert.executeUpdate();
 
@@ -132,20 +135,13 @@ public class SQLite {
         }
     }
 
-    public void updateData(UUID uuid, int num, String column, String type) {
+    public void updateData(UUID uuid, int num, String column) {
         String sql = "UPDATE `" + tablePrefix + "fishdata` SET " + column.toLowerCase() + "=? WHERE uuid=?";
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
              PreparedStatement statement = connection.prepareStatement(sql)) {
 
-            int data = Integer.parseInt(getData(uuid, column));
-
-            if (type.equalsIgnoreCase("set")) {
-                statement.setInt(1, num);
-            } else if (type.equalsIgnoreCase("add") || type.equalsIgnoreCase("remove")) {
-                statement.setInt(1, data + num);
-            }
-            statement.setString(2, uuid.toString());
+            statement.setInt(1, num);
             statement.executeUpdate();
 
         } catch (SQLException e) {
@@ -153,7 +149,7 @@ public class SQLite {
         }
     }
 
-    public String getData(UUID uuid, String data) {
+    public Integer getData(UUID uuid, String data) {
         String sql = "SELECT " + data + " FROM `" + tablePrefix + "fishdata` WHERE uuid=?";
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
@@ -162,14 +158,14 @@ public class SQLite {
             statement.setString(1, uuid.toString());
 
             try (ResultSet results = statement.executeQuery()){
-                if (results.next() && results.getString(data) != null) {
-                    return String.valueOf(results.getString(data));
+                if (results.next()) {
+                    return results.getInt(data);
                 }
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return "ERROR";
+        return 0;
     }
 }

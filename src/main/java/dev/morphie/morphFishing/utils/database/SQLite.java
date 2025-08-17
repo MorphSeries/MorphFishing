@@ -56,13 +56,13 @@ public class SQLite {
                     + "mf_level INTEGER NOT NULL DEFAULT 0, "
                     + "mf_xp INTEGER NOT NULL DEFAULT 0, "
                     + "mf_required_xp INTEGER NOT NULL DEFAULT 0, "
-                    + "gillings INTEGER NOT NULL DEFAULT 0, "
-                    + "fish_caught INTEGER NOT NULL DEFAULT 0, "
-                    + "common_caught INTEGER NOT NULL DEFAULT 0, "
-                    + "rare_caught INTEGER NOT NULL DEFAULT 0, "
-                    + "epic_caught INTEGER NOT NULL DEFAULT 0, "
-                    + "legendary_caught INTEGER NOT NULL DEFAULT 0, "
-                    + "mythic_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_gillings INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_fish_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_common_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_rare_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_epic_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_legendary_caught INTEGER NOT NULL DEFAULT 0, "
+                    + "mf_mythic_caught INTEGER NOT NULL DEFAULT 0, "
                     + "UNIQUE(uuid)"
                     + ");";
 
@@ -100,13 +100,13 @@ public class SQLite {
                 "mf_level, " + // 2
                 "mf_xp, " + // 3
                 "mf_required_xp, " +// 4
-                "gillings, " + // 5
-                "fish_caught, " + // 6
-                "common_caught, " + // 7
-                "rare_caught, " + // 8
-                "epic_caught, " + // 9
-                "legendary_caught, " + // 10
-                "mythic_caught) " + // 11
+                "mf_gillings, " + // 5
+                "mf_fish_caught, " + // 6
+                "mf_common_caught, " + // 7
+                "mf_rare_caught, " + // 8
+                "mf_epic_caught, " + // 9
+                "mf_legendary_caught, " + // 10
+                "mf_mythic_caught) " + // 11
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
         // Use a try-with-resources block to manage connection and statement

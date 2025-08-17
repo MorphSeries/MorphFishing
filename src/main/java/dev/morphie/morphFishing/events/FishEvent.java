@@ -3,6 +3,7 @@ package dev.morphie.morphFishing.events;
 import dev.morphie.morphFishing.MorphFishing;
 import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphFishing.utils.ItemHandlers;
+import dev.morphie.morphFishing.utils.database.DataManager;
 import dev.morphie.morphLib.itemstack.ItemMaker;
 import dev.morphie.morphLib.utils.Colorize;
 import dev.morphie.morphLib.utils.StringUtils;
@@ -29,6 +30,8 @@ public class FishEvent implements Listener {
 
     String name;
     String tier;
+    String actualName;
+    int xp;
 
     @EventHandler
     public void onPlayerFish(PlayerFishEvent event) {
@@ -45,6 +48,8 @@ public class FishEvent implements Listener {
                     fish = createFish(returnFishTier(), p);
                     String caughtMessage = ConfigManager.getInstance().getMessage("messages", "FishCaughtActionBar").replace("%TIER%", tier).replace("%FISH_NAME%", name);
                     new StringUtils().ActionBar(new Colorize().addColor(caughtMessage), p);
+                    new DataManager(plugin).addXP(uuid, this.getXP(actualName));
+                    new DataManager(plugin).addGillings(uuid, this.getGillings(actualName));
                     new ItemHandlers().giveItem(p, p.getWorld(), p.getLocation(), fish, "feet");
                 }
             }
@@ -88,7 +93,6 @@ public class FishEvent implements Listener {
         final Random random = new Random();
         final int actualValue = random.nextInt(100);
         int sum = 0;
-        String actualName = "";
 
         for (Map.Entry<Integer, ? extends String> entry: items.entrySet()) {
             sum += entry.getKey();
@@ -107,5 +111,47 @@ public class FishEvent implements Listener {
             i++;
         }
         return i;
+    }
+
+    private int getXP(String tier) {
+        switch (tier) {
+            case "common" -> {
+                return this.plugin.getConfig().getInt("PlayerLevel.BaseCommonFishXP");
+            }
+            case "rare" -> {
+                return this.plugin.getConfig().getInt("PlayerLevel.BaseRareFishXP");
+            }
+            case "epic" -> {
+                return this.plugin.getConfig().getInt("PlayerLevel.BaseEpicFishXP");
+            }
+            case "legendary" -> {
+                return this.plugin.getConfig().getInt("PlayerLevel.BaseLegendaryFishXP");
+            }
+            case "mythic" -> {
+                return this.plugin.getConfig().getInt("PlayerLevel.BaseMythicFishXP");
+            }
+        }
+        return 0;
+    }
+
+    private int getGillings(String tier) {
+        switch (tier) {
+            case "common" -> {
+                return this.plugin.getConfig().getInt("Gillings.BaseCommonGillings");
+            }
+            case "rare" -> {
+                return this.plugin.getConfig().getInt("Gillings.BaseRareGillings");
+            }
+            case "epic" -> {
+                return this.plugin.getConfig().getInt("Gillings.BaseEpicGillings");
+            }
+            case "legendary" -> {
+                return this.plugin.getConfig().getInt("Gillings.BaseLegendaryGillings");
+            }
+            case "mythic" -> {
+                return this.plugin.getConfig().getInt("Gillings.BaseMythicGillings");
+            }
+        }
+        return 0;
     }
 }

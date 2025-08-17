@@ -37,4 +37,10 @@ public class DataManager {
         updateData(uuid, requiredXP, "mf_required_xp");
         updateData(uuid, level, "mf_level");
     }
+
+    public void addGillings(UUID uuid, int gillings) {
+        int currentGillings = getData(uuid, "mf_gillings");
+        currentGillings += gillings;
+        updateData(uuid, currentGillings, "mf_gillings");
+    }
 }

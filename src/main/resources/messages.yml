@@ -13,9 +13,12 @@ Commands:
   Main: " &a&l| &3/mf &8- &7Opens this command help menu."
   Menu: " &a&l| &3/mf menu &8- &7Opens the main MorphFishing menu."
   Market: " &a&l| &3/mf market &8- &7Opens the fish market menu."
+  Profile: " &a&l| &3/mf profile &8- &7To view your fishing profile."
   Admin:
+    Gillings: "&9[Admin] &3/mf gillings &a<add | set | remove> <player> <num>  &8- &7Manipulate a players gillings amount."
+    Level: "&9[Admin] &3/mf level &a<add | set | remove> <player> <num>  &8- &7Manipulate a players fishing level."
+    Xp: "&9[Admin] &3/mf xp &a<add | set | remove> <player> <num> &8- &7Manipulate a players fishing xp amount."
     Reload: "&9[Admin] &3/mf reload &8- &7Reloads the plugins configuration files."
-
 
 # ]====================================================================================================================[
 # Normal Messages
@@ -25,6 +28,13 @@ FishCaughtActionBar: "&7You caught a %TIER% %FISH_NAME% &7!"
 
 # ]====================================================================================================================[
 # Error Messages
-InvalidPermissions: "&cYou do not have sufficient permissions."
+InvalidPermissions: "&cYou do not have sufficient permissions to use this!"
 InvalidArguments: "&cInvalid arguments! Use &7/mf &cto view all plugin commands."
 PlayerOnlyCommand: "&cOnly players can run this command!"
+
+CorrectUsage:
+  Menu: "&cCorrect Usage&8: &7/mf menu"
+  Market: "&cCorrect Usage&8: &7/mf market"
+  Admin:
+    Gillings: "&cCorrect Usage&8: &7/mf gillings <add | set | remove> <player> <num>"
+    Reload: "&cCorrect Usage&8: &7/mf reload"

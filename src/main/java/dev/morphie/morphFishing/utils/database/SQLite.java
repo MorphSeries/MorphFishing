@@ -135,7 +135,7 @@ public class SQLite {
         }
     }
 
-    public void updateData(UUID uuid, int num, String column) {
+    public void setData(UUID uuid, int num, String column) {
         String sql = "UPDATE `" + tablePrefix + "fishdata` SET " + column.toLowerCase() + "=? WHERE uuid=?";
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);

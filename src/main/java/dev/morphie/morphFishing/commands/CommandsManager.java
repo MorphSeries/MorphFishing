@@ -5,6 +5,7 @@ import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphFishing.menus.MainMenu;
 import dev.morphie.morphFishing.menus.Market;
 import dev.morphie.morphLib.utils.Colorize;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -12,6 +13,7 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
+import java.util.UUID;
 
 public class CommandsManager implements CommandExecutor {
 
@@ -28,45 +30,61 @@ public class CommandsManager implements CommandExecutor {
                 if (sender instanceof Player) {
                     try {
                         new CommandHelp(this.plugin).helpCommand(sender, args);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    } catch (InvalidConfigurationException e) {
+                    } catch (IOException | InvalidConfigurationException e) {
                         throw new RuntimeException(e);
                     }
-                } else {
-                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
-
-                }
-                return true;
-            } else if (args[0].equalsIgnoreCase("reload")) {
-                // Sender (Including Console)`
-                try {
-                    new FishReload(this.plugin).reloadCommand(sender, args);
-                } catch (IOException | InvalidConfigurationException e) {
-                    throw new RuntimeException(e);
-                }
-                return true;
-            } else if (args[0].equalsIgnoreCase("menu")) {
-                if (sender instanceof Player) {
-                    Player p = ((Player) sender).getPlayer();
-                    new MainMenu(this.plugin).openMainGUI(p);
+                } else if (args[0].equalsIgnoreCase("reload")) {
+                    if (args.length > 1) {
+                        // Sender (Including Console)`
+                        try {
+                            new FishReload(this.plugin).reloadCommand(sender, args);
+                        } catch (IOException | InvalidConfigurationException e) {
+                            throw new RuntimeException(e);
+                        }
+                        return true;
+                    }
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Reload")));
+                    return true;
+                } else if (args[0].equalsIgnoreCase("menu")) {
+                    if (args.length > 1) {
+                        if (sender instanceof Player) {
+                            Player p = ((Player) sender).getPlayer();
+                            new MainMenu(this.plugin).openMainGUI(p);
+                            return true;
+                        } else {
+                            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
+                            return true;
+                        }
+                    }
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Menu")));
+                    return true;
+                } else if (args[0].equalsIgnoreCase("market")) {
+                    if (args.length > 1) {
+                        if (sender instanceof Player) {
+                            Player p = ((Player) sender).getPlayer();
+                            new Market(plugin).openMarketGUI(p);
+                            return true;
+                        } else {
+                            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
+                            return true;
+                        }
+                    }
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Market")));
                     return true;
                 } else {
-                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
-
+                    if (args[0].equalsIgnoreCase("gillings")) {
+                        if (args.length == 4) {
+                            try {
+                                new Gillings(plugin).gillingsCommand(sender, args);
+                            } catch (IOException | InvalidConfigurationException e) {
+                                throw new RuntimeException(e);
+                            }
+                        }
+                    } else {
+                        sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidArguments")));
+                        return true;
+                    }
                 }
-            } else if (args[0].equalsIgnoreCase("market")) {
-                if (sender instanceof Player) {
-                    Player p = ((Player) sender).getPlayer();
-                    new Market(plugin).openMarketGUI(p);
-                    return true;
-                } else {
-                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
-
-                }
-            } else {
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidArguments")));
-                return true;
             }
         }
         return false;

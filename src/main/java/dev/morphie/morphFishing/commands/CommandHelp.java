@@ -23,8 +23,12 @@ public class CommandHelp {
             sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Main")));
             sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Menu")));
             sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Market")));
+            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Profile")));
             if (sender.hasPermission("morphfishing.admin")) {
                 sender.sendMessage(" ");
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Admin.Gillings")));
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Admin.Level")));
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Admin.Xp")));
                 sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Commands.Admin.Reload")));
             }
             sender.sendMessage(" ");

@@ -18,7 +18,7 @@ public class DataManager {
 
     public void updateData(UUID uuid, int data, String name) {
         if (this.plugin.getConfig().getString("StorageMethod").equals("SQLite")) {
-            new SQLite(this.plugin).updateData(uuid, data, name);
+            new SQLite(this.plugin).setData(uuid, data, name);
         }
     }
 

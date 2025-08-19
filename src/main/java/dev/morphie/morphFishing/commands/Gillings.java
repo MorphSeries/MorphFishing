@@ -27,7 +27,7 @@ public class Gillings {
         UUID targetUUID = null;
         if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.gillings")) {
             try {
-                Integer.parseInt(args[1]);
+                Integer.parseInt(args[3]);
             }
             catch (NumberFormatException e1) {
                 sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));

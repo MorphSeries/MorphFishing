@@ -26,38 +26,50 @@ public class Gillings {
         OfflinePlayer offTarget = null;
         UUID targetUUID = null;
         if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.gillings")) {
-            try {
-                Integer.parseInt(args[1]);
-            }
-            catch (NumberFormatException e1) {
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
-                return;
-            }
-            if (Bukkit.getPlayer(args[2]) != null) {
-                target = Bukkit.getPlayer(args[2]);
-                targetUUID =  target.getUniqueId();
-            } else {
-                offTarget = Bukkit.getServer().getOfflinePlayer(args[2]);
-                targetUUID = offTarget.getUniqueId();
-            }
-            if (new SQLite(plugin).playerExists(targetUUID)) {
-                if (args[1].equalsIgnoreCase("add")) {
-                    if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.gillings.add")) {
-                        int currentGillings = new SQLite(plugin).getData(targetUUID, "mf_gillings");
-                        int addGillings = Integer.parseInt(args[3]);
-                        new SQLite(plugin).setData(targetUUID, currentGillings+=addGillings,"mf_gillings");
-                        sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") +  ConfigManager.getInstance().getMessage("messages", "GillingsAddedMessage")));
+            if (args.length == 4) {
+                try {
+                    Integer.parseInt(args[3]);
+                } catch (NumberFormatException e1) {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
+                    return;
+                }
+                if (Bukkit.getPlayer(args[2]) != null) {
+                    target = Bukkit.getPlayer(args[2]);
+                    targetUUID = target.getUniqueId();
+                } else {
+                    offTarget = Bukkit.getServer().getOfflinePlayer(args[2]);
+                    targetUUID = offTarget.getUniqueId();
+                }
+                if (new SQLite(plugin).playerExists(targetUUID)) {
+                    if (args[1].equalsIgnoreCase("add")) {
+                        if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.gillings.add")) {
+                            int currentGillings = new SQLite(plugin).getData(targetUUID, "mf_gillings");
+                            int addGillings = Integer.parseInt(args[3]);
+                            new SQLite(plugin).setData(targetUUID, currentGillings += addGillings, "mf_gillings");
+                            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "GillingsAddedMessage").replace("%GILLINGS%", addGillings + "")));
+                        } else {
+                            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
+                        }
                     } else {
-                        sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
+                        sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
                     }
                 } else {
-                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
+                }
+            } else if (args.length == 1) {
+                if (sender.hasPermission("morphfishing.gillings")) {
+                    Player p = (Player) sender;
+                    UUID uuid = p.getUniqueId();
+                    int currentGillings = new SQLite(plugin).getData(uuid, "mf_gillings");
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "Prefix") + ConfigManager.getInstance().getMessage("messages", "GillingsMessage").replace("%GILLINGS%", currentGillings + "")));
+                } else {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
                 }
             } else {
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Gillings")));
             }
         } else {
-            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") +  ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
+            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidPermissions")));
         }
     }
 }

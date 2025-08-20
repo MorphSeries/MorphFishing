@@ -140,8 +140,8 @@ public class SQLite {
 
         try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + databasePath);
              PreparedStatement statement = connection.prepareStatement(sql)) {
-
             statement.setInt(1, num);
+            statement.setString(2, uuid.toString());
             statement.executeUpdate();
 
         } catch (SQLException e) {

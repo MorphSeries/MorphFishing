@@ -25,6 +25,8 @@ Commands:
 ReloadMessage: "&7Plugin files have &asuccessfully &7been reloaded!"
 MarketSellMessage: "&7You sold &3%FISH% &7fish for &a%CURRENCY_SYMBOL%%MONEY%&7!"
 FishCaughtActionBar: "&7You caught a %TIER% %FISH_NAME% &7!"
+GillingsMessage: "&7You currently have &3%GILLINGS% &7gillings!"
+GillingsAddedMessage: "&7You have been given &3%GILLINGS% &7gillings!"
 
 # ]====================================================================================================================[
 # Error Messages
@@ -33,8 +35,6 @@ InvalidArguments: "&cInvalid arguments! Use &7/mf &cto view all plugin commands.
 PlayerOnlyCommand: "&cOnly players can run this command!"
 
 CorrectUsage:
-  Menu: "&cCorrect Usage&8: &7/mf menu"
-  Market: "&cCorrect Usage&8: &7/mf market"
   Admin:
     Gillings: "&cCorrect Usage&8: &7/mf gillings <add | set | remove> <player> <num>"
     Reload: "&cCorrect Usage&8: &7/mf reload"

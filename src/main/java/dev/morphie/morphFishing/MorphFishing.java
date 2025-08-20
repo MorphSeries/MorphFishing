@@ -4,6 +4,7 @@ import dev.morphie.morphFishing.commands.CommandsManager;
 import dev.morphie.morphFishing.events.FishEvent;
 import dev.morphie.morphFishing.events.PlayerJoinEvent;
 import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphFishing.utils.PlaceholderAPI;
 import dev.morphie.morphFishing.utils.database.SQLite;
 import dev.morphie.morphLib.utils.Colorize;
 import net.milkbowl.vault.economy.Economy;
@@ -54,6 +55,12 @@ public final class MorphFishing extends JavaPlugin {
         } else {
             Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&cDisabled due to invalid storage method selected in the config.yml"));
             getServer().getPluginManager().disablePlugin(this);
+        }
+        if(Bukkit.getPluginManager().getPlugin("PlaceholderAPI") != null){
+            new PlaceholderAPI(this).register();
+            getServer().getConsoleSender().sendMessage(new Colorize().addColor("&9PlaceholderAPI&8: &aHooked"));
+        } else {
+            getServer().getConsoleSender().sendMessage(new Colorize().addColor("&9PlaceholderAPI&8: &cNot Found"));
         }
         Bukkit.getConsoleSender().sendMessage(new Colorize().addColor("&7_______________________________________________________"));
     }

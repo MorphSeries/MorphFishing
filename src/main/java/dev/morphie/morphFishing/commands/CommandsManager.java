@@ -36,40 +36,40 @@ public class CommandsManager implements CommandExecutor {
                     return true;
                 }
             } else if (args[0].equalsIgnoreCase("reload")) {
-                if (args.length > 1) {
+                if (args.length == 1) {
                     // Sender (Including Console)`
                     try {
                         new FishReload(this.plugin).reloadCommand(sender, args);
                     } catch (IOException | InvalidConfigurationException e) {
                         throw new RuntimeException(e);
                     }
-                    return true;
+                } else {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Reload")));
                 }
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Reload")));
                 return true;
             } else if (args[0].equalsIgnoreCase("menu")) {
-                if (args.length > 1) {
+                if (args.length == 1) {
                     if (sender instanceof Player) {
                         Player p = ((Player) sender).getPlayer();
                         new MainMenu(this.plugin).openMainGUI(p);
                     } else {
                         sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
                     }
-                    return true;
+                } else {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Menu")));
                 }
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Menu")));
                 return true;
             } else if (args[0].equalsIgnoreCase("market")) {
-                if (args.length > 1) {
+                if (args.length == 1) {
                     if (sender instanceof Player) {
                         Player p = ((Player) sender).getPlayer();
                         new Market(plugin).openMarketGUI(p);
                     } else {
                         sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "PlayerOnlyCommand")));
                     }
-                    return true;
+                } else {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Market")));
                 }
-                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Market")));
                 return true;
             } else if (args[0].equalsIgnoreCase("gillings")) {
                 try {
@@ -78,10 +78,10 @@ public class CommandsManager implements CommandExecutor {
                     throw new RuntimeException(e);
                 }
                 return true;
+            } else {
+                sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidArguments")));
+                return true;
             }
-        } else {
-            sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "InvalidArguments")));
-            return true;
         }
         return false;
     }

@@ -35,6 +35,8 @@ InvalidArguments: "&cInvalid arguments! Use &7/mf &cto view all plugin commands.
 PlayerOnlyCommand: "&cOnly players can run this command!"
 
 CorrectUsage:
+  Menu: "&cCorrect Usage&8: &7/mf menu"
+  Market: "&cCorrect Usage&8: &7/mf market"
   Admin:
     Gillings: "&cCorrect Usage&8: &7/mf gillings <add | set | remove> <player> <num>"
     Reload: "&cCorrect Usage&8: &7/mf reload"

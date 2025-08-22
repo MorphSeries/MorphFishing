@@ -10,11 +10,11 @@ import org.bukkit.command.CommandSender;
 
 import java.io.IOException;
 
-public class FishReload {
+public class CommandReload {
 
     private MorphFishing plugin;
 
-    public FishReload(MorphFishing plugin) {
+    public CommandReload(MorphFishing plugin) {
         this.plugin = plugin;
     }
 

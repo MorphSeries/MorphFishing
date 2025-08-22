@@ -13,11 +13,11 @@ import org.bukkit.entity.Player;
 import java.io.IOException;
 import java.util.UUID;
 
-public class Gillings {
+public class CommandGillings {
 
     private MorphFishing plugin;
 
-    public Gillings(MorphFishing plugin) {
+    public CommandGillings(MorphFishing plugin) {
         this.plugin = plugin;
     }
 

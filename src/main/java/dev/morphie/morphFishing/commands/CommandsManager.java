@@ -5,7 +5,6 @@ import dev.morphie.morphFishing.files.ConfigManager;
 import dev.morphie.morphFishing.menus.MainMenu;
 import dev.morphie.morphFishing.menus.Market;
 import dev.morphie.morphLib.utils.Colorize;
-import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -13,7 +12,6 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
 import java.io.IOException;
-import java.util.UUID;
 
 public class CommandsManager implements CommandExecutor {
 
@@ -35,11 +33,23 @@ public class CommandsManager implements CommandExecutor {
                     }
                     return true;
                 }
+            } else if (args[0].equalsIgnoreCase("admin")) {
+                if (args.length == 1) {
+                    // Sender (Including Console)`
+                    try {
+                        new CommandAdmin(this.plugin).helpCommand(sender, args);
+                    } catch (IOException | InvalidConfigurationException e) {
+                        throw new RuntimeException(e);
+                    }
+                } else {
+                    sender.sendMessage(new Colorize().addColor(ConfigManager.getInstance().getMessage("messages", "ErrorPrefix") + ConfigManager.getInstance().getMessage("messages", "CorrectUsage.Admin.Reload")));
+                }
+                return true;
             } else if (args[0].equalsIgnoreCase("reload")) {
                 if (args.length == 1) {
                     // Sender (Including Console)`
                     try {
-                        new FishReload(this.plugin).reloadCommand(sender, args);
+                        new CommandReload(this.plugin).reloadCommand(sender, args);
                     } catch (IOException | InvalidConfigurationException e) {
                         throw new RuntimeException(e);
                     }
@@ -73,7 +83,7 @@ public class CommandsManager implements CommandExecutor {
                 return true;
             } else if (args[0].equalsIgnoreCase("gillings")) {
                 try {
-                    new Gillings(plugin).gillingsCommand(sender, args);
+                    new CommandGillings(plugin).gillingsCommand(sender, args);
                 } catch (IOException | InvalidConfigurationException e) {
                     throw new RuntimeException(e);
                 }

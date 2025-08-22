@@ -9,17 +9,17 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import java.io.IOException;
 import java.util.List;
 
-public class CommandHelp {
+public class CommandAdmin {
     private MorphFishing plugin;
 
-    public CommandHelp(MorphFishing plugin) {
+    public CommandAdmin(MorphFishing plugin) {
         this.plugin = plugin;
     }
 
     public void helpCommand(CommandSender sender, String[] args) throws IOException, InvalidConfigurationException {
-        if (sender.hasPermission("morphfishing.help")) {
-            List<String> helpMenu = ConfigManager.getInstance().getMessageList("messages", "PlayerCommandMenu");
-            for (String menu : helpMenu) {
+        if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.help")) {
+            List<String> adminMenu = ConfigManager.getInstance().getMessageList("messages", "AdminCommandMenu");
+            for (String menu : adminMenu) {
                 sender.sendMessage(new Colorize().addColor(menu));
             }
         } else {

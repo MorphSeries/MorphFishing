@@ -7,18 +7,34 @@ ErrorPrefix: "&#ff5555&l&o[&#ff6851&l&o!&#ff7a4d&l&o] &#ff9f45&l&oᴇ&#ffb241&l&
 
 # ]====================================================================================================================[
 # /mf | Command help menu
-Commands:
-  Header: "&7[]&m===============&r&7[] &#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &7[]&m===============&r&7[]"
-  Footer: "&7[]&m================================================&r&7[]"
-  Main: " &a&l| &3/mf &8- &7Opens this command help menu."
-  Menu: " &a&l| &3/mf menu &8- &7Opens the main MorphFishing menu."
-  Market: " &a&l| &3/mf market &8- &7Opens the fish market menu."
-  Profile: " &a&l| &3/mf profile &8- &7To view your fishing profile."
-  Admin:
-    Gillings: "&9[Admin] &3/mf gillings &a<add | set | remove> <player> <num>  &8- &7Manipulate a players gillings amount."
-    Level: "&9[Admin] &3/mf level &a<add | set | remove> <player> <num>  &8- &7Manipulate a players fishing level."
-    Xp: "&9[Admin] &3/mf xp &a<add | set | remove> <player> <num> &8- &7Manipulate a players fishing xp amount."
-    Reload: "&9[Admin] &3/mf reload &8- &7Reloads the plugins configuration files."
+PlayerCommandMenu:
+  - " "
+  - "&7[]&m===============&r&7[] &#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &7[]&m===============&r&7[]"
+  - " "
+  - " &9[Player] &7<optional> &8| &7[required]"
+  - " &a&l| &3/mf &8- &7Opens this command help menu."
+  - " &a&l| &3/mf menu &8- &7Opens the main MorphFishing menu."
+  - " &a&l| &3/mf market &8- &7Opens the fish market menu."
+  - " &a&l| &3/mf profile &8- &7To view your fishing profile."
+  - " &a&l| &3/mf gillings &8- &7To view your current gillings."
+  - " &a&l| &3/mf admin &8- &7To view all administrative commands."
+  - " "
+  - "&7[]&m================================================&r&7[]"
+  - " "
+
+# /mf admin | Command help menu
+AdminCommandMenu:
+  - " "
+  - "&7[]&m===============&r&7[] &#5555FF&lᴍ&#4763F1&lᴏ&#3971E3&lʀ&#2B80D5&lᴘ&#1C8EC6&lʜ&#0E9CB8&lꜰ&#00AAAA&lɪ&#11BB99&lꜱ&#22CC88&lʜ&#33DD77&lɪ&#44EE66&lɴ&#55FF55&lɢ &7[]&m===============&r&7[]"
+  - " "
+  - " &9[Admin] &7<optional> &8| &7[required]"
+  - " &a&l| &3/mf gillings &a<add | set | remove> <player> <num>  &8- &7Manipulate a players gillings amount."
+  - " &a&l| &3/mf level &a<add | set | remove> <player> <num>  &8- &7Manipulate a players fishing level."
+  - " &a&l| &3/mf xp &a<add | set | remove> <player> <num> &8- &7Manipulate a players fishing xp amount."
+  - " &a&l| &3/mf reload &8- &7Reloads the plugins configuration files."
+  - " "
+  - "&7[]&m================================================&r&7[]"
+  - " "
 
 # ]====================================================================================================================[
 # Normal Messages

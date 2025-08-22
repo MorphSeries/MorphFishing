@@ -43,4 +43,12 @@ public class DataManager {
         currentGillings += gillings;
         updateData(uuid, currentGillings, "mf_gillings");
     }
+
+    public void addFishCaughtStat(UUID uuid, String type) {
+        int allFish = this.getData(uuid, "mf_fish_caught");
+        updateData(uuid, allFish+=1, "mf_fish_caught");
+
+        int tierFish = this.getData(uuid, "mf_" + type + "_caught");
+        updateData(uuid, tierFish+=1, "mf_" + type + "_caught");
+    }
 }

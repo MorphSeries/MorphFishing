@@ -50,6 +50,7 @@ public class FishEvent implements Listener {
                     new StringUtils().ActionBar(new Colorize().addColor(caughtMessage), p);
                     new DataManager(plugin).addXP(uuid, this.getXP(actualName));
                     new DataManager(plugin).addGillings(uuid, this.getGillings(actualName));
+                    new DataManager(plugin).addFishCaughtStat(uuid, actualName);
                     new ItemHandlers().giveItem(p, p.getWorld(), p.getLocation(), fish, "feet");
                 }
             }

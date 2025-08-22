@@ -1,0 +1,177 @@
+package dev.morphie.morphFishing.menus;
+
+import de.themoep.inventorygui.InventoryGui;
+import de.themoep.inventorygui.StaticGuiElement;
+import dev.morphie.morphFishing.MorphFishing;
+import dev.morphie.morphFishing.files.ConfigManager;
+import dev.morphie.morphFishing.utils.MarketHandler;
+import dev.morphie.morphLib.itemstack.ItemMaker;
+import dev.morphie.morphLib.utils.Colorize;
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
+import java.util.ArrayList;
+import java.util.UUID;
+
+public class Journal {
+    private MorphFishing plugin;
+    public Journal(MorphFishing plugin) {
+        this.plugin = plugin;
+    }
+
+    String[] guiSetup = ConfigManager.getInstance().getMessageList("journal", "MenuLayout").toArray(new String[0]);
+    String lore;
+
+    public void openJournalGUI(Player p) {
+        InventoryGui gui = new InventoryGui(plugin, p, new Colorize().addColor(ConfigManager.getInstance().getMessage("journal", "MenuName")), guiSetup);
+        UUID uuid = p.getUniqueId();
+
+        //Filler Item
+        if (ConfigManager.getInstance().getBoolean("journal", "FillerItem.Enabled")) {
+            gui.setFiller(new ItemMaker().makeItem(Material.matchMaterial(ConfigManager.getInstance().getMessage("journal", "FillerItem.Material")), 1, ConfigManager.getInstance().getInt("main", "FillerItem.CustomModelID"), "", null, false, false, p, null));
+        }
+
+        // Glass Item 1
+        gui.addElement(new StaticGuiElement('1',
+                this.buildGuiItem("MenuItems.1", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.1.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.1.Name")),
+                lore
+        ));
+
+        // Glass Item 2
+        gui.addElement(new StaticGuiElement('2',
+                this.buildGuiItem("MenuItems.2", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.2.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.2.Name")),
+                lore
+        ));
+
+        // Glass Item 3
+        gui.addElement(new StaticGuiElement('3',
+                this.buildGuiItem("MenuItems.3", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.3.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.3.Name")),
+                lore
+        ));
+
+        // Glass Item 4
+        gui.addElement(new StaticGuiElement('4',
+                this.buildGuiItem("MenuItems.4", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.4.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.4.Name")),
+                lore
+        ));
+
+        // Glass Item 5
+        gui.addElement(new StaticGuiElement('5',
+                this.buildGuiItem("MenuItems.5", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.5.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.5.Name")),
+                lore
+        ));
+
+        // Common Fish
+        gui.addElement(new StaticGuiElement('c',
+                this.buildGuiItem("MenuItems.c", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.c.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.c.Name")),
+                lore
+        ));
+
+        // Rare Fish
+        gui.addElement(new StaticGuiElement('r',
+                this.buildGuiItem("MenuItems.r", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.r.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.r.Name")),
+                lore
+        ));
+
+        // Epic Fish
+        gui.addElement(new StaticGuiElement('e',
+                this.buildGuiItem("MenuItems.e", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.e.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.e.Name")),
+                lore
+        ));
+
+        // Legendary Fish
+        gui.addElement(new StaticGuiElement('l',
+                this.buildGuiItem("MenuItems.l", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.l.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.l.Name")),
+                lore
+        ));
+
+        // Mythic Fish
+        gui.addElement(new StaticGuiElement('m',
+                this.buildGuiItem("MenuItems.m", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.m.Amount"),
+                click -> {
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.m.Name")),
+                lore
+        ));
+
+        // Back
+        gui.addElement(new StaticGuiElement('b',
+                this.buildGuiItem("MenuItems.b", p),
+                ConfigManager.getInstance().getInt("journal", "MenuItems.b.Amount"),
+                click -> {
+                    new MainMenu(plugin).openMainGUI(p);
+                    InventoryGui.clearHistory(p);
+                    return true;
+                },
+                new Colorize().addColor(ConfigManager.getInstance().getMessage("journal",  "MenuItems.b.Name")),
+                lore
+        ));
+
+        gui.setCloseAction(close -> {
+            return false; // Don't go back to the previous GUI (true would automatically go back to the previously opened one)
+        });
+
+        gui.show(p);
+    }
+
+    private ItemStack buildGuiItem(String path, Player p) {
+        Material material = Material.matchMaterial(ConfigManager.getInstance().getMessage("journal", path + ".Material"));
+        int amount = ConfigManager.getInstance().getInt("journal", path + ".Amount");
+        int CustomModelID =  ConfigManager.getInstance().getInt("journal", path + ".CustomModelID");
+        boolean glow = ConfigManager.getInstance().getBoolean("journal", path + ".Glow");
+        ArrayList<String> loreList = new ArrayList<String>();
+        for (String s : ConfigManager.getInstance().getMessageList("journal", path + ".Lore")) {
+            loreList.add(new Colorize().addColor(s));
+        }
+        lore = String.join("\n", loreList);
+        return new ItemMaker().makeItem(material, amount, CustomModelID, "", loreList, glow, false, p, null);
+    }
+}

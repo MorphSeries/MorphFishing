@@ -1,0 +1,100 @@
+# Name of the GUI. You can set this to a custom name for texture packs.
+MenuName: "&#5555ff&l&oꜰ&#5561f3&l&oɪ&#556de7&l&oꜱ&#5579db&l&oʜ&#5586ce&l&oɪ&#5592c2&l&oɴ&#559eb6&l&oɢ &#55b69e&l&oᴊ&#55c292&l&oᴏ&#55ce86&l&oᴜ&#55db79&l&oʀ&#55e76d&l&oɴ&#55f361&l&oᴀ&#55ff55&l&oʟ"
+
+MenuLayout: #If 'f' is not assigned players will not be able to sell fish.
+  - '123444321'
+  - '255555552'
+  - '35crelm53'
+  - '255555552'
+  - '1234b4321'
+
+FillerItem: # This item will set anywhere there is a space in the menu layout. This is useful for custom textured gui's.
+  Material: ''
+  CustomModelID:
+  Enabled: false
+
+MenuItems:
+  "1": # WARNING: These CANNOT be changed. You can change the item information below and the menu size and layout above.
+    Material: 'BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "2":
+    Material: 'LIGHT_BLUE_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "3":
+    Material: 'CYAN_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "4":
+    Material: 'LIME_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "5":
+    Material: 'GRAY_STAINED_GLASS_PANE'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&7"
+  "b":
+    Material: 'ARROW'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&c&lʙᴀᴄᴋ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to go back to the main menu."
+  "c":
+    Material: 'BRICK'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&b&lᴄᴏᴍᴍᴏɴ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to view all &bCommon &7fish!"
+  "r":
+    Material: 'IRON_INGOT'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&9&lʀᴀʀᴇ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to view all &9Rare &7fish!"
+  "e":
+    Material: 'GOLD_INGOT'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&c&lᴇᴘɪᴄ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to view all &cEpic &7fish!"
+  "l":
+    Material: 'NETHERITE_INGOT'
+    Amount: 1
+    CustomModelId: 0
+    Glow: false
+    Name: "&6&lʟᴇɢᴇɴᴅᴀʀʏ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to view all &6Legendary &7fish!"
+  "m":
+    Material: 'RESIN_BRICK'
+    Amount: 1
+    CustomModelId: 0
+    Glow: true
+    Name: "&5&lᴍʏᴛʜɪᴄ ꜰɪꜱʜ"
+    Lore:
+      - " "
+      - "&a&l| &7Click to view all &5Mythic &7fish!"

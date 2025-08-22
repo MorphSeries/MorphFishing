@@ -115,6 +115,7 @@ public class MainMenu {
                 this.buildGuiItem("MenuItems.j", p),
                 ConfigManager.getInstance().getInt("main", "MenuItems.j.Amount"),
                 click -> {
+                    new Journal(plugin).openJournalGUI(p);
                     return true;
                 },
                 new Colorize().addColor(ConfigManager.getInstance().getMessage("main",  "MenuItems.j.Name")),

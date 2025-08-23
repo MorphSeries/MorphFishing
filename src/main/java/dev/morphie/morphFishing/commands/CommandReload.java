@@ -19,7 +19,7 @@ public class CommandReload {
     }
 
     public void reloadCommand(CommandSender sender, String[] args) throws IOException, InvalidConfigurationException {
-        if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.reload")) {
+        if (sender.hasPermission("morphfishing.admin") || sender.hasPermission("morphfishing.admin.reload")) {
             Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("MorphFishing");
             if (this.plugin != null) {
                 this.plugin.reloadConfig();

@@ -19,6 +19,7 @@ Events:
     Duration: 3600
     BossBar:
       Enabled: true
+      Color: AQUA
       Message: "&3&lGlobal Caught &7Fishing Event&8: &b%time% &7left."
     Rewards:
       Participation:

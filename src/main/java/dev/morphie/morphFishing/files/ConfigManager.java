@@ -19,6 +19,8 @@ public class ConfigManager {
     // Base Files
     private FileConfiguration messagescfg;
     private File messagesf;
+    private FileConfiguration eventscfg;
+    private File eventsf;
 
     // Fish Files
     private FileConfiguration commoncfg;
@@ -51,6 +53,7 @@ public class ConfigManager {
 
     public void loadConfigs() throws IOException, InvalidConfigurationException {
         messagesf = new File(MorphFishing.getInstance().getDataFolder(), "messages.yml");
+        eventsf = new File(MorphFishing.getInstance().getDataFolder(), "events.yml");
         commonf = new File(MorphFishing.getInstance().getDataFolder() + File.separator + "Fish" + File.separator, "common.yml");
         raref  = new File(MorphFishing.getInstance().getDataFolder() + File.separator + "Fish" + File.separator, "rare.yml");
         epicf = new File(MorphFishing.getInstance().getDataFolder() + File.separator + "Fish" + File.separator, "epic.yml");
@@ -65,6 +68,9 @@ public class ConfigManager {
 
         if (!messagesf.exists()) {
             MorphFishing.getInstance().saveResource("messages.yml", false);
+        }
+        if (!eventsf.exists()) {
+            MorphFishing.getInstance().saveResource("events.yml", false);
         }
         if (!commonf.exists()) {
             MorphFishing.getInstance().saveResource("Fish" + File.separator + "common.yml", false);
@@ -100,6 +106,7 @@ public class ConfigManager {
             MorphFishing.getInstance().saveResource("Menus" + File.separator + "workbenches.yml", false);
         }
         messagescfg = new YamlConfiguration();
+        eventscfg = new YamlConfiguration();
         commoncfg = new YamlConfiguration();
         rarecfg = new YamlConfiguration();
         epiccfg = new YamlConfiguration();
@@ -114,6 +121,7 @@ public class ConfigManager {
 
         try {
             messagescfg.load(messagesf);
+            eventscfg.load(eventsf);
             commoncfg.load(commonf);
             rarecfg.load(raref);
             epiccfg.load(epicf);
@@ -134,6 +142,7 @@ public class ConfigManager {
     public void save() {
         try {
             messagescfg.save(messagesf);
+            eventscfg.save(eventsf);
             commoncfg.save(commonf);
             rarecfg.save(raref);
             epiccfg.save(epicf);
@@ -153,6 +162,7 @@ public class ConfigManager {
     public String getMessage(String file, String path) {
         return switch (file) {
             case "messages" -> ConfigManager.instance.messagescfg.getString(path);
+            case "events" -> ConfigManager.instance.eventscfg.getString(path);
             case "common" -> ConfigManager.instance.commoncfg.getString(path);
             case "rare" -> ConfigManager.instance.rarecfg.getString(path);
             case "epic" -> ConfigManager.instance.epiccfg.getString(path);
@@ -171,6 +181,7 @@ public class ConfigManager {
     public List<String> getMessageList(String file, String path) {
         return switch (file) {
             case "messages" -> ConfigManager.instance.messagescfg.getStringList(path);
+            case "events" -> ConfigManager.instance.eventscfg.getStringList(path);
             case "common" -> ConfigManager.instance.commoncfg.getStringList(path);
             case "rare" -> ConfigManager.instance.rarecfg.getStringList(path);
             case "epic" -> ConfigManager.instance.epiccfg.getStringList(path);
@@ -189,6 +200,7 @@ public class ConfigManager {
     public Boolean getBoolean(String file, String path) {
         return switch (file) {
             case "messages" -> ConfigManager.instance.messagescfg.getBoolean(path);
+            case "events" -> ConfigManager.instance.eventscfg.getBoolean(path);
             case "common" -> ConfigManager.instance.commoncfg.getBoolean(path);
             case "rare" -> ConfigManager.instance.rarecfg.getBoolean(path);
             case "epic" -> ConfigManager.instance.epiccfg.getBoolean(path);
@@ -207,6 +219,7 @@ public class ConfigManager {
     public int getInt(String file, String path) {
         return switch (file) {
             case "messages" -> ConfigManager.instance.messagescfg.getInt(path);
+            case "events" -> ConfigManager.instance.eventscfg.getInt(path);
             case "common" -> ConfigManager.instance.commoncfg.getInt(path);
             case "rare" -> ConfigManager.instance.rarecfg.getInt(path);
             case "epic" -> ConfigManager.instance.epiccfg.getInt(path);
